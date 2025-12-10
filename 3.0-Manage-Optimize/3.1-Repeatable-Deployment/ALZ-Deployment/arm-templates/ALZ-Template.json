@@ -5887,7 +5887,7 @@
             // Peering the primary hub and the secondary hub (when nva or vhub is selected)
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHubSecondary'), 'vhub')), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').hubPeeringDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -6982,7 +6982,7 @@
         {
             "condition": "[or(equals(parameters('enablePrivateSubnet'), 'Yes'), equals(parameters('enablePrivateSubnet'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').privateSubnetDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7008,7 +7008,7 @@
         {
             "condition": "[or(equals(parameters('enablePrivateSubnet'), 'Yes'), equals(parameters('enablePrivateSubnet'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').privateSubnetDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7671,7 +7671,7 @@
             // Peer vnet in identity subscription to connectivity hub if vhub or nva condition is true
             "condition": "[and(or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('identityAddressPrefix'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').identityPeeringDeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -7718,7 +7718,7 @@
             // Peer vnet in identity subscription to connectivity hub in a secondary region if vhub or nva condition is true
             "condition": "[and(or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('identityAddressPrefixSecondary'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').identityPeering2DeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocationSecondary')]",
@@ -7765,7 +7765,7 @@
             // Peer vnet in identity subscription to connectivity hub if vwan condition is true
             "condition": "[and(equals(parameters('enableHub'), 'vwan'), not(empty(parameters('identityAddressPrefix'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').identityVwanPeeringDeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -7812,7 +7812,7 @@
             // Peer vnet in identity subscription to connectivity hub if vwan condition is true
             "condition": "[and(equals(parameters('enableHubSecondary'), 'vwan'), not(empty(parameters('identityAddressPrefixSecondary'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').identityVwanPeering2DeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocationSecondary')]",
@@ -7967,7 +7967,7 @@
             // Peering corp connected lz vnet to connectivity sub (when nva or vhub is selected)
             "condition": "[and(or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('corpConnectedLzSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[concat(variables('deploymentNames').corpPeeringDeploymentName, copyIndex())]",
             "subscriptionId": "[if(not(empty(parameters('corpConnectedLzSubscriptionId'))), parameters('corpConnectedLzSubscriptionId')[copyIndex()].subs, '')]",
             "location": "[parameters('connectivityLocation')]",
@@ -8022,7 +8022,7 @@
             // Peering corp connected lz vnet to connectivity sub (when vwan is selected)
             "condition": "[and(equals(parameters('enableHub'), 'vwan'), not(empty(parameters('corpConnectedLzSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[concat(variables('deploymentNames').corpConnectedLzVwanSubs, copyIndex())]",
             "subscriptionId": "[if(not(empty(parameters('corpConnectedLzSubscriptionId'))), parameters('corpConnectedLzSubscriptionId')[copyIndex()].subs, '')]",
             "location": "[parameters('connectivityLocation')]",
@@ -8958,7 +8958,7 @@
             // Peering the primary hub and the secondary hub (when nva or vhub is selected)
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHubSecondary'), 'vhub')), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('esLitedeploymentNames').hubPeeringDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -9300,7 +9300,7 @@
         },
         {
             "condition": "[equals(parameters('telemetryOptOut'), 'No')]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentName]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -9315,7 +9315,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameSinglePlatformSub]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -9330,7 +9330,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), empty(parameters('singlePlatformSubscriptionId')))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameMultiPlatformSubs]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -9345,7 +9345,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableHub'), 'No'))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingNone]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -9360,7 +9360,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingHubSpoke]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -9375,7 +9375,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableHub'), 'vwan'))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingVirtualWan]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -9390,7 +9390,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableMonitorBaselines'), 'Yes'))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').ambaPortalPidCuaDeploymentName]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -9405,7 +9405,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2023-05-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameSecondaryRegion]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
