@@ -90,12 +90,8 @@ jobs:
       - name: Run ARM Template Linter
         shell: pwsh
         run: |
-          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-          Install-Module -Name PowerShellGet -Force -Scope CurrentUser -AllowClobber
-          Import-Module PowerShellGet
-          Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-          Install-Module -Name arm-ttk -Force -Scope CurrentUser -AllowClobber
-          Import-Module arm-ttk
+          git clone https://github.com/Azure/arm-ttk.git $env:RUNNER_TEMP/arm-ttk
+          Import-Module $env:RUNNER_TEMP/arm-ttk/arm-ttk.psd1 -Force
           Test-AzArmTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist,DeploymentTemplate-Must-Be-Present -Verbose
 
       - name: Upload ARM TTK Results
