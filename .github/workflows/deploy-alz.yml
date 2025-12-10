@@ -90,9 +90,20 @@ jobs:
       - name: Run ARM Template Linter
         shell: pwsh
         run: |
-          git clone https://github.com/Azure/arm-ttk.git $env:RUNNER_TEMP/arm-ttk
-          Import-Module $env:RUNNER_TEMP/arm-ttk/arm-ttk.psd1 -Force
-          Test-AzArmTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist,DeploymentTemplate-Must-Be-Present -Verbose
+          $armTtkPath = "$env:RUNNER_TEMP\arm-ttk"
+          git clone https://github.com/Azure/arm-ttk.git $armTtkPath
+          $modulePath = Join-Path $armTtkPath "arm-ttk.psd1"
+          if (-not (Test-Path $modulePath)) {
+            $modulePath = Get-ChildItem $armTtkPath -Recurse -Filter "*.psd1" | Select-Object -First 1 -ExpandProperty FullName
+          }
+          if ($modulePath -and (Test-Path $modulePath)) {
+            Import-Module $modulePath -Force
+            Test-AzArmTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist,DeploymentTemplate-Must-Be-Present -Verbose
+          } else {
+            Write-Host "Error: Could not find arm-ttk module file"
+            Get-ChildItem $armTtkPath | Select-Object Name, FullName | Format-Table
+            exit 1
+          }
 
       - name: Upload ARM TTK Results
         uses: actions/upload-artifact@v4
