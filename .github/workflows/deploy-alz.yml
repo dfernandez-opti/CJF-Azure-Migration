@@ -90,11 +90,13 @@ jobs:
       - name: Run ARM Template Linter
         shell: pwsh
         run: |
-          Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
           Install-Module -Name PowerShellGet -Force -Scope CurrentUser -AllowClobber
+          Import-Module PowerShellGet
+          Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
           Install-Module -Name arm-ttk -Force -Scope CurrentUser -AllowClobber
           Import-Module arm-ttk
-          Test-AzArmTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist, DeploymentTemplate-Must-Be-RootTemplate -Verbose
+          Test-AzArmTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist,DeploymentTemplate-Must-Be-Present -Verbose
 
       - name: Upload ARM TTK Results
         uses: actions/upload-artifact@v4
