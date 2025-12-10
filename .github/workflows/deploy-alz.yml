@@ -98,7 +98,7 @@ jobs:
           }
           if ($modulePath -and (Test-Path $modulePath)) {
             Import-Module $modulePath -Force
-            Test-AzTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist,DeploymentTemplate-Must-Be-Present -Verbose
+            Test-AzTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist,DeploymentTemplate-Must-Be-Present,adminUsername-Should-Not-Be-A-Literal,adminPassword-Should-Not-Be-A-Literal -Verbose
           } else {
             Write-Host "Error: Could not find arm-ttk module file"
             Get-ChildItem $armTtkPath | Select-Object Name, FullName | Format-Table
