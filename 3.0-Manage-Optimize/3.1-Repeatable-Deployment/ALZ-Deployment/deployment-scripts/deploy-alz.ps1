@@ -71,10 +71,11 @@ if ($account.id -ne $SubscriptionId) {
     }
 }
 
-# Get script directory
+# Get script directory and resolve template paths (templates are in parent directory)
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
-$templatePath = Join-Path $scriptPath $TemplateFile
-$parametersPath = Join-Path $scriptPath $ParametersFile
+$alzDeploymentPath = Split-Path -Parent $scriptPath
+$templatePath = Join-Path $alzDeploymentPath $TemplateFile
+$parametersPath = Join-Path $alzDeploymentPath $ParametersFile
 
 # Validate paths
 if (-not (Test-Path $templatePath)) {
@@ -89,7 +90,16 @@ if (-not (Test-Path $parametersPath)) {
 
 # Create resource group if it doesn't exist
 Write-Log "Checking resource group: $ResourceGroupName"
-$rg = az group show --name $ResourceGroupName --subscription $SubscriptionId 2>$null | ConvertFrom-Json
+try {
+    $rgOutput = az group show --name $ResourceGroupName --subscription $SubscriptionId 2>&1
+    if ($LASTEXITCODE -eq 0) {
+        $rg = $rgOutput | ConvertFrom-Json
+    } else {
+        $rg = $null
+    }
+} catch {
+    $rg = $null
+}
 if (-not $rg) {
     Write-Log "Creating resource group: $ResourceGroupName in $Location"
     az group create `
