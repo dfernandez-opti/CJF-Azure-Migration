@@ -66,9 +66,13 @@ jobs:
 
       - name: Run ARM Template Linter
         run: |
-          # Install ARM Template ToolKit via PowerShell
-          pwsh -Command "Install-Module -Name arm-ttk -Force -Scope CurrentUser -AllowClobber"
-          pwsh -Command "Import-Module arm-ttk; Test-AzTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist, DeploymentTemplate-Must-Be-Used"
+          pwsh -Command "
+            Install-PackageProvider -Name NuGet -Force -Scope CurrentUser;
+            Install-Module -Name PowerShellGet -Force -Scope CurrentUser -AllowClobber;
+            Install-Module -Name arm-ttk -Force -Scope CurrentUser -AllowClobber;
+            Import-Module arm-ttk;
+            Test-AzTemplate -TemplatePath 3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json -Skip Parameter-File-Should-Exist, DeploymentTemplate-Must-Be-Used -Verbose
+          "
 
       - name: Upload Security Scan Results
         uses: actions/upload-artifact@v4
