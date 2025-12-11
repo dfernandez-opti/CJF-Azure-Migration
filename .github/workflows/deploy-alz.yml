@@ -57,14 +57,12 @@ jobs:
           path: ./
           base: ${{ github.event.before || github.event.repository.default_branch }}
           head: ${{ github.event.after || github.sha }}
-          only_verified: false
       
       - name: Run Secret Scanning (Manual Trigger)
         if: github.event_name == 'workflow_dispatch'
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          only_verified: false
 
       - name: Upload Security Scan Results
         uses: actions/upload-artifact@v4
@@ -130,11 +128,18 @@ jobs:
 
       - name: Validate ARM Template
         run: |
-          TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            REF="${{ github.event.pull_request.head.sha }}"
+          else
+            REF="${{ github.sha }}"
+          fi
+          TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/${REF}/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
           PARAMETERS_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Parameters.json"
+          echo "Validating template from: $TEMPLATE_URL"
+          curl -I "$TEMPLATE_URL" || echo "Warning: Template URL may not be accessible"
           az deployment tenant validate \
             --location ${{ env.LOCATION }} \
-            --template-uri $TEMPLATE_URL \
+            --template-uri "$TEMPLATE_URL" \
             --parameters @$PARAMETERS_FILE
 
       - name: Export Validation Results
@@ -178,12 +183,15 @@ jobs:
         id: deploy
         run: |
           DEPLOYMENT_NAME="alz-deployment-$(date +%s)"
-          TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
+          REF="${{ github.sha }}"
+          TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/${REF}/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
           PARAMETERS_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Parameters.json"
+          echo "Deploying template from: $TEMPLATE_URL"
+          curl -I "$TEMPLATE_URL" || echo "Warning: Template URL may not be accessible"
           az deployment tenant create \
             --name $DEPLOYMENT_NAME \
             --location ${{ env.LOCATION }} \
-            --template-uri $TEMPLATE_URL \
+            --template-uri "$TEMPLATE_URL" \
             --parameters @$PARAMETERS_FILE \
             --verbose
           
