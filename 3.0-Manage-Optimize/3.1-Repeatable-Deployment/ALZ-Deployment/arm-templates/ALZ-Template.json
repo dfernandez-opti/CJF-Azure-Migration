@@ -228,14 +228,6 @@
             ],
             "defaultValue": "Disabled"
         },
-        "enableSecuritySolution": {
-            "type": "string",
-            "defaultValue": "Yes",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ]
-        },
         "enableServiceHealth": {
             "type": "string",
             "defaultValue": "No",
