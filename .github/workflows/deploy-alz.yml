@@ -178,50 +178,46 @@ jobs:
 
       - name: Validate ARM Template
         run: |
-          # Use template-uri for validation as nested templates require templateLink.uri
-          # The template must be accessible from Azure's infrastructure
-          TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/main/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
+          # Template and parameters file paths (local files from checkout)
+          TEMPLATE_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
           PARAMETERS_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Parameters.json"
           
-          echo "Validating template from: $TEMPLATE_URL"
-          echo "Note: Nested templates require templateLink.uri which is only available with --template-uri"
-          
-          # Check template accessibility
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$TEMPLATE_URL")
-          if [ "$HTTP_CODE" != "200" ]; then
-            echo "Error: Template URL returned HTTP $HTTP_CODE"
-            curl -I "$TEMPLATE_URL" || true
+          # Validate files exist
+          if [ ! -f "$TEMPLATE_FILE" ]; then
+            echo "Error: Template file not found: $TEMPLATE_FILE"
+            exit 1
+          fi
+          if [ ! -f "$PARAMETERS_FILE" ]; then
+            echo "Error: Parameters file not found: $PARAMETERS_FILE"
             exit 1
           fi
           
-          echo "Template URL is accessible (HTTP 200)"
+          echo "=========================================="
+          echo "ARM Template Validation"
+          echo "=========================================="
+          echo "Template File: $TEMPLATE_FILE"
+          echo "Parameters File: $PARAMETERS_FILE"
+          echo "Location: ${{ env.LOCATION }}"
+          echo "=========================================="
           
-          # Validate template structure
-          # Note: Some nested templates may show InvalidContentLink warnings during validation
-          # but the main template structure will be validated
-          set +e
-          VALIDATION_OUTPUT=$(az deployment tenant validate \
-            --location ${{ env.LOCATION }} \
-            --template-uri "$TEMPLATE_URL" \
-            --parameters @$PARAMETERS_FILE 2>&1)
+          # Validate using --template-file to avoid InvalidContentLink errors
+          # This validates the main template structure and parameter compatibility
+          # Nested templates use absolute URLs from deploymentUris variables, so they will
+          # be validated when Azure attempts to download them during deployment
+          echo "Validating ARM template structure..."
+          az deployment tenant validate \
+            --location "${{ env.LOCATION }}" \
+            --template-file "$TEMPLATE_FILE" \
+            --parameters "@$PARAMETERS_FILE"
+          
           VALIDATION_EXIT=$?
           
-          echo "$VALIDATION_OUTPUT"
-          
-          # Check if the error is specifically about InvalidContentLink in nested templates
-          if [ $VALIDATION_EXIT -ne 0 ]; then
-            if echo "$VALIDATION_OUTPUT" | grep -q "InvalidContentLink"; then
-              echo "Warning: InvalidContentLink detected - this may be from nested templates"
-              echo "The main template structure is valid, but some nested templates may have URI issues"
-              echo "This is often expected with Enterprise-Scale nested templates"
-              # Don't fail the validation if it's just InvalidContentLink
-              # The actual deployment will handle nested template resolution
-            else
-              echo "Error: Template validation failed with non-InvalidContentLink error"
-              exit 1
-            fi
+          if [ $VALIDATION_EXIT -eq 0 ]; then
+            echo "✅ Template validation successful"
+          else
+            echo "❌ Template validation failed with exit code: $VALIDATION_EXIT"
+            exit $VALIDATION_EXIT
           fi
-          set -e
 
       - name: Export Validation Results
         run: |
@@ -263,27 +259,61 @@ jobs:
       - name: Deploy ALZ Template
         id: deploy
         run: |
+          # Generate unique deployment name with timestamp
           DEPLOYMENT_NAME="alz-deployment-$(date +%s)"
-          # Use main branch for deployment to ensure stable URLs for nested templates
-          TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/main/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
+          
+          # Template and parameters file paths (local files from checkout)
+          TEMPLATE_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
           PARAMETERS_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Parameters.json"
-          echo "Deploying template from: $TEMPLATE_URL"
-          echo "Checking template accessibility..."
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$TEMPLATE_URL")
-          if [ "$HTTP_CODE" != "200" ]; then
-            echo "Error: Template URL returned HTTP $HTTP_CODE"
-            curl -I "$TEMPLATE_URL" || true
+          
+          # Validate files exist
+          if [ ! -f "$TEMPLATE_FILE" ]; then
+            echo "Error: Template file not found: $TEMPLATE_FILE"
             exit 1
-          else
-            echo "Template URL is accessible (HTTP 200)"
           fi
+          if [ ! -f "$PARAMETERS_FILE" ]; then
+            echo "Error: Parameters file not found: $PARAMETERS_FILE"
+            exit 1
+          fi
+          
+          echo "=========================================="
+          echo "ALZ Deployment Information"
+          echo "=========================================="
+          echo "Deployment Name: $DEPLOYMENT_NAME"
+          echo "Template File: $TEMPLATE_FILE"
+          echo "Parameters File: $PARAMETERS_FILE"
+          echo "Location: ${{ env.LOCATION }}"
+          echo "Subscription: ${{ env.AZURE_SUBSCRIPTION_ID }}"
+          echo "Workflow Run: ${{ github.run_id }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          echo "=========================================="
+          
+          # Deploy using --template-file instead of --template-uri
+          # This avoids InvalidContentLink errors from nested templates that try to use
+          # deployment().properties.templateLink.uri to construct relative URIs
+          # All nested templates already use absolute URLs from deploymentUris variables
+          echo "Starting ALZ deployment..."
           az deployment tenant create \
-            --name $DEPLOYMENT_NAME \
-            --location ${{ env.LOCATION }} \
-            --template-uri "$TEMPLATE_URL" \
-            --parameters @$PARAMETERS_FILE \
+            --name "$DEPLOYMENT_NAME" \
+            --location "${{ env.LOCATION }}" \
+            --template-file "$TEMPLATE_FILE" \
+            --parameters "@$PARAMETERS_FILE" \
             --verbose
           
+          DEPLOY_EXIT_CODE=$?
+          
+          if [ $DEPLOY_EXIT_CODE -eq 0 ]; then
+            echo "✅ Deployment initiated successfully"
+            echo "Deployment Name: $DEPLOYMENT_NAME"
+          else
+            echo "❌ Deployment failed with exit code: $DEPLOY_EXIT_CODE"
+            echo "Check the error details above"
+            exit $DEPLOY_EXIT_CODE
+          fi
+          
+          # Export outputs for subsequent steps
           echo "deployment_name=$DEPLOYMENT_NAME" >> $GITHUB_OUTPUT
           echo "deployment_timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_OUTPUT
 
