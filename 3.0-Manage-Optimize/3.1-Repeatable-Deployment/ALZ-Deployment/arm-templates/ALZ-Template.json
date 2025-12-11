@@ -2317,7 +2317,9 @@
                         "value": "[if(empty(parameters('ambaAgServiceHook')), null(), array(parameters('ambaAgServiceHook')))]"
                     },
                     "ALZArmRoleId": {
-                        "value": "[createArray(subscriptionResourceId(parameters('managementSubscriptionId'), 'Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635'))]"
+                        "value": [
+                            "[subscriptionResourceId(parameters('managementSubscriptionId'), 'Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]"
+                        ]
                     },
                     "ALZMonitorResourceGroupName": {
                         "value": "[parameters('monitorAlertsResourceGroup')]"
@@ -2419,7 +2421,9 @@
                         "value": "[if(empty(parameters('ambaAgServiceHook')), null(), array(parameters('ambaAgServiceHook')))]"
                     },
                     "ALZArmRoleId": {
-                        "value": "[createArray(subscriptionResourceId(parameters('singlePlatformSubscriptionId'), 'Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635'))]"
+                        "value": [
+                            "[subscriptionResourceId(parameters('singlePlatformSubscriptionId'), 'Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]"
+                        ]
                     },
                     "ALZMonitorResourceGroupName": {
                         "value": "[parameters('monitorAlertsResourceGroup')]"
