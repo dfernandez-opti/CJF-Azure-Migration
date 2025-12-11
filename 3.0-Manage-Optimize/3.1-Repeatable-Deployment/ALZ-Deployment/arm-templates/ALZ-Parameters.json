@@ -146,7 +146,7 @@
       "value": "Yes"
     },
     "connectivitySubscriptionId": {
-      "value": null
+      "value": "922fcb86-d9bc-4c9a-8782-b4f40a87559e"
     },
     "addressPrefix": {
       "value": "10.100.0.0/16"
