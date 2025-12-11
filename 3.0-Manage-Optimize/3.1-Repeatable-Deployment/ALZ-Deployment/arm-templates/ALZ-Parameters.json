@@ -463,8 +463,8 @@
     },
     "wsCMKSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsAPIMInitiatives": {
@@ -472,8 +472,8 @@
     },
     "wsAPIMSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsAppServicesInitiatives": {
@@ -481,8 +481,8 @@
     },
     "wsAppServicesSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsAutomationInitiatives": {
@@ -490,8 +490,8 @@
     },
     "wsAutomationSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsBotServiceInitiatives": {
@@ -499,8 +499,8 @@
     },
     "wsBotServiceSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsCognitiveServicesInitiatives": {
@@ -508,8 +508,8 @@
     },
     "wsCognitiveServicesSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsComputeInitiatives": {
@@ -517,8 +517,8 @@
     },
     "wsComputeSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsContainerAppsInitiatives": {
@@ -526,8 +526,8 @@
     },
     "wsContainerAppsSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsContainerInstanceInitiatives": {
@@ -535,8 +535,8 @@
     },
     "wsContainerInstanceSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsContainerRegistryInitiatives": {
@@ -544,8 +544,8 @@
     },
     "wsContainerRegistrySelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsCosmosDbInitiatives": {
@@ -553,8 +553,8 @@
     },
     "wsCosmosDbSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsDataExplorerInitiatives": {
@@ -562,8 +562,8 @@
     },
     "wsDataExplorerSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsDataFactoryInitiatives": {
@@ -571,8 +571,8 @@
     },
     "wsDataFactorySelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsEventGridInitiatives": {
@@ -580,8 +580,8 @@
     },
     "wsEventGridSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsEventHubInitiatives": {
@@ -589,8 +589,8 @@
     },
     "wsEventHubSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsKeyVaultSupInitiatives": {
@@ -598,8 +598,8 @@
     },
     "wsKeyVaultSupSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsKubernetesInitiatives": {
@@ -607,8 +607,8 @@
     },
     "wsKubernetesSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsMachineLearningInitiatives": {
@@ -616,8 +616,8 @@
     },
     "wsMachineLearningSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsMySQLInitiatives": {
@@ -625,8 +625,8 @@
     },
     "wsMySQLSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsNetworkInitiatives": {
@@ -634,8 +634,8 @@
     },
     "wsNetworkSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsOpenAIInitiatives": {
@@ -643,8 +643,8 @@
     },
     "wsOpenAISelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsPostgreSQLInitiatives": {
@@ -652,8 +652,8 @@
     },
     "wsPostgreSQLSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsServiceBusInitiatives": {
@@ -661,8 +661,8 @@
     },
     "wsServiceBusSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsSQLInitiatives": {
@@ -670,8 +670,8 @@
     },
     "wsSQLSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsStorageInitiatives": {
@@ -679,8 +679,8 @@
     },
     "wsStorageSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsSynapseInitiatives": {
@@ -688,8 +688,8 @@
     },
     "wsSynapseSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "enableWsVirtualDesktopInitiatives": {
@@ -697,8 +697,8 @@
     },
     "wsVirtualDesktopSelectorMG": {
       "value": [
-        "contoso-platform",
-        "contoso-landingzones"
+        "cjf-platform",
+        "cjf-landingzones"
       ]
     },
     "regulatoryComplianceInitativesToAssign": {
