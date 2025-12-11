@@ -355,6 +355,9 @@ jobs:
 
       - name: Generate Deployment Log
         run: |
+          # Create directory if it doesn't exist
+          mkdir -p 3.0-Manage-Optimize/3.1-Repeatable-Deployment/deployment-evidence
+          
           cat > 3.0-Manage-Optimize/3.1-Repeatable-Deployment/deployment-evidence/deployment-log-$(date +%Y%m%d-%H%M%S).md << EOF
           # ALZ Deployment Log - CJF
           
