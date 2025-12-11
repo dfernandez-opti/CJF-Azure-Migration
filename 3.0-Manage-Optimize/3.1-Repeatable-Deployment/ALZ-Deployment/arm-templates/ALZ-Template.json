@@ -8158,7 +8158,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'vhub'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), equals(parameters('enableHub'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
@@ -8251,7 +8251,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'nva'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), equals(parameters('enableHub'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
@@ -8326,7 +8326,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'vwan'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), equals(parameters('enableHub'), 'vwan'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
@@ -8451,7 +8451,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'vhub'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
@@ -8544,7 +8544,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'nva'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
@@ -8671,7 +8671,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityRouteTableDeploymentName]",
