@@ -345,7 +345,7 @@
       "value": null
     },
     "identityAddressPrefixSecondary": {
-      "value": "10.210.0.0/24"
+      "value": null
     },
     "corpConnectedLzSubscriptionId": {
       "value": null
