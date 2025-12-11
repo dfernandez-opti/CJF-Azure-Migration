@@ -1822,7 +1822,7 @@
             "wsStoragePolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/ENFORCE-GuardrailsStoragePolicyAssignment.json",
             "wsSynapsePolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/ENFORCE-GuardrailsSynapsePolicyAssignment.json",
             "wsVirtualDesktopPolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/ENFORCE-GuardrailsVirtualDesktopPolicyAssignment.json",
-            "denyActionDeleteUAMIAMAPolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/DENYACTION-DeleteUAMIAMAPolicyAssignment.json')]"
+            "denyActionDeleteUAMIAMAPolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/DENYACTION-DeleteUAMIAMAPolicyAssignment.json"
         },
         "deploymentSuffix": "[concat('-', parameters('connectivityLocation'), '-', guid(parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow')))]",
         "deploymentNames": {
