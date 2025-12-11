@@ -5308,7 +5308,7 @@
             }
         },
         {
-            "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('singlePlatformSubscriptionId'))))]",
+            "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -5379,7 +5379,7 @@
             }
         },
         {
-            "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('singlePlatformSubscriptionId'))))]",
+            "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').avnmLitePolicyDeploymentName]",
@@ -8717,7 +8717,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityRouteTable2DeploymentName]",
