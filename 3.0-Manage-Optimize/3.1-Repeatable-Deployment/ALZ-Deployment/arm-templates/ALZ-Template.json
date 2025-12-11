@@ -1852,7 +1852,7 @@
             "wsVirtualDesktopPolicyAssignment": "[uri(deployment().properties.templateLink.uri, 'managementGroupTemplates/policyAssignments/ENFORCE-GuardrailsVirtualDesktopPolicyAssignment.json')]",
             "denyActionDeleteUAMIAMAPolicyAssignment": "[uri(deployment().properties.templateLink.uri, 'managementGroupTemplates/policyAssignments/DENYACTION-DeleteUAMIAMAPolicyAssignment.json')]"
         },
-        "deploymentSuffix": "[concat('-', deployment().location, '-', guid(parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow')))]",
+        "deploymentSuffix": "[concat('-', parameters('connectivityLocation'), '-', guid(parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow')))]",
         "deploymentNames": {
             "mgmtGroupDeploymentName": "[take(concat('alz-Mgs', variables('deploymentSuffix')), 64)]",
             "secSubscriptionPlacement": "[take(concat('alz-SecSub', variables('deploymentSuffix')), 64)]",
@@ -1879,7 +1879,7 @@
             "monitorServiceHealthDeploymentName": "[take(concat('alz-SvcHealthMonitor', variables('deploymentSuffix')), 64)]",
             "monitorServiceHealthBuiltInDeploymentName": "[take(concat('alz-SvcHealthBuiltIn', variables('deploymentSuffix')), 64)]",
             "asbPolicyDeploymentName": "[take(concat('alz-ASB', variables('deploymentSuffix')), 64)]",
-            "regulatoryComplianceInitativesToAssignDeploymentName": "[take(concat('alz-RegComp-', deployment().location, '-', uniqueString(parameters('currentDateTimeUtcNow')), '-'), 64)]",
+            "regulatoryComplianceInitativesToAssignDeploymentName": "[take(concat('alz-RegComp-', parameters('connectivityLocation'), '-', uniqueString(parameters('currentDateTimeUtcNow')), '-'), 64)]",
             "resourceDiagnosticsPolicyDeploymentName": "[take(concat('alz-ResourceDiagnostics', variables('deploymentSuffix')), 64)]",
             "activityDiagnosticsPolicyDeploymentName": "[take(concat('alz-ActivityDiagnostics', variables('deploymentSuffix')), 64)]",
             "ascPolicyDeploymentName": "[take(concat('alz-ASC', variables('deploymentSuffix')), 64)]",
@@ -1948,7 +1948,7 @@
             "mdEndpointsAMADeploymentName": "[take(concat('alz-MDEndpointsAMA', variables('deploymentSuffix')), 64)]",
             "corpConnectedLzVwanSubs": "[take(concat('alz-CorpConnLzsVwan', variables('deploymentSuffix')), 50)]",
             "privateSubnetDeploymentName": "[take(concat('alz-pvtSubnet', variables('deploymentSuffix')), 64)]",
-            "pidCuaDeploymentName": "[take(concat('pid-', variables('cuaid'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
+            "pidCuaDeploymentName": "[take(concat('pid-', variables('cuaid'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
             "denyClassicResourcePolicyDeploymentName": "[take(concat('alz-NoClassicResource', variables('deploymentSuffix')), 64)]",
             "costOptimizationDeploymentName": "[take(concat('alz-CostOptimization', variables('deploymentSuffix')), 64)]",
             "trustedLaunchDeploymentName": "[take(concat('alz-TrustedLaunch', variables('deploymentSuffix')), 64)]",
