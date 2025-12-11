@@ -1703,7 +1703,7 @@
             "platformManagementGroup": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroups').platform)]",
             "securityManagementGroup": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroups').security)]",
             "managementManagementGroup": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroups').management)]",
-            "connectivityManagementGroup": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroups').connectivity)]",
+            "connectivityManagementGroup": "[if(empty(parameters('singlePlatformSubscriptionId')), tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroups').connectivity), tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroupsLite').platform))]",
             "identityManagementGroup": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroups').identity)]",
             "lzsManagementGroup": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroups').lzs)]",
             "corpManagementGroup": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('mgmtGroups').corp)]",
@@ -2567,7 +2567,8 @@
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "dependsOn": [
-                "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]"
+                "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]",
+                "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').mgmtGroupLiteDeploymentName)]"
             ],
             "properties": {
                 "mode": "Incremental",
