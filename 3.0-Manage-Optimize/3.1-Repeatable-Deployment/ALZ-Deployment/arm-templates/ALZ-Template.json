@@ -312,13 +312,6 @@
                 "description": "Service Hook URI for action group notifications."
             }
         },
-        "ambaAgArmRole": {
-            "type": "array",
-            "defaultValue": [],
-            "metadata": {
-                "description": "ARM roles for action group notifications."
-            }
-        },
         "enableAMBAHybridVM": {
             "type": "string",
             "defaultValue": "Yes",
