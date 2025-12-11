@@ -1955,9 +1955,9 @@
             "zoneResilientDeploymentName": "[take(concat('alz-ZoneResilient', variables('deploymentSuffix')), 64)]",
             "resourceRgLocationDeploymentName": "[take(concat('alz-ResourceRGLoc', variables('deploymentSuffix')), 64)]",
             "denyVMUnmanagedDiskPolicyDeploymentName": "[take(concat('alz-NoUnmanagedDiskResource', variables('deploymentSuffix')), 64)]",
-            "ztnPhase1PidCuaDeploymentName": "[take(concat('pid-', variables('ztnPhase1CuaId'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'), coalesce(parameters('connectivitySubscriptionId'), parameters('singlePlatformSubscriptionId'))), '-ztnp1'), 64)]",
-            "ambaPortalPidCuaDeploymentName": "[take(concat('pid-', variables('ambaPortalCuaId'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'), coalesce(parameters('connectivitySubscriptionId'), parameters('singlePlatformSubscriptionId'))), '-ztnp1'), 64)]",
-            "pidCuaDeploymentNameSecondaryRegion": "[take(concat('pid-', variables('cuaidSecondaryRegion'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
+            "ztnPhase1PidCuaDeploymentName": "[take(concat('pid-', variables('ztnPhase1CuaId'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'), coalesce(parameters('connectivitySubscriptionId'), parameters('singlePlatformSubscriptionId'))), '-ztnp1'), 64)]",
+            "ambaPortalPidCuaDeploymentName": "[take(concat('pid-', variables('ambaPortalCuaId'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'), coalesce(parameters('connectivitySubscriptionId'), parameters('singlePlatformSubscriptionId'))), '-ztnp1'), 64)]",
+            "pidCuaDeploymentNameSecondaryRegion": "[take(concat('pid-', variables('cuaidSecondaryRegion'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
             "diagnosticSettingsforMGsDeploymentName": "[take(concat('alz-DiagSettingsMGs', variables('deploymentSuffix')), 64)]",
             "userAssignedIdentityDeploymentName": "[take(concat('alz-UserAssignedIdentity', variables('deploymentSuffix')), 60)]",
             "azureUpdateManagerPolicyDeploymentName": "[take(concat('alz-AzureUpdateManager', variables('deploymentSuffix')), 64)]",
@@ -1968,11 +1968,11 @@
             "MDFCDefenderSqlAmaDeploymentName": "[take(concat('alz-MDFCDefenderForSqlAma', variables('deploymentSuffix')), 64)]",
             "dataCollectionRuleMdfcDefenderSQLDeploymentName": "[take(concat('alz-DataCollectionRuleDefenderSQL', variables('deploymentSuffix')), 64)]",
             "MDFCSubscriptionEnableDeploymentName": "[take(concat('alz-MDFCSubEnable', variables('deploymentSuffix')), 62)]",
-            "pidCuaDeploymentNameSinglePlatformSub": "[take(concat('pid-', variables('cuaidSinglePlatformSub'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
-            "pidCuaDeploymentNameMultiPlatformSubs": "[take(concat('pid-', variables('cuaidMultiPlatformSubs'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
-            "pidCuaDeploymentNameNetworkingNone": "[take(concat('pid-', variables('cuaidNetworkingNone'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
-            "pidCuaDeploymentNameNetworkingHubSpoke": "[take(concat('pid-', variables('cuaidNetworkingHubSpoke'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
-            "pidCuaDeploymentNameNetworkingVirtualWan": "[take(concat('pid-', variables('cuaidNetworkingVirtualWan'), '-' , uniqueString(deployment().location, parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
+            "pidCuaDeploymentNameSinglePlatformSub": "[take(concat('pid-', variables('cuaidSinglePlatformSub'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
+            "pidCuaDeploymentNameMultiPlatformSubs": "[take(concat('pid-', variables('cuaidMultiPlatformSubs'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
+            "pidCuaDeploymentNameNetworkingNone": "[take(concat('pid-', variables('cuaidNetworkingNone'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
+            "pidCuaDeploymentNameNetworkingHubSpoke": "[take(concat('pid-', variables('cuaidNetworkingHubSpoke'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
+            "pidCuaDeploymentNameNetworkingVirtualWan": "[take(concat('pid-', variables('cuaidNetworkingVirtualWan'), '-' , uniqueString(parameters('connectivityLocation'), parameters('enterpriseScaleCompanyPrefix'), parameters('currentDateTimeUtcNow'))), 64)]",
             "denyActionDeleteUAMIAMAPolicyDeploymentName": "[take(concat('alz-DenyActionDeleteUAMI', variables('deploymentSuffix')), 64)]",
             "wsCMKDeploymentName": "[take(concat('alz-wsCMK', variables('deploymentSuffix')), 35)]",
             "wsAPIMDeploymentName": "[take(concat('alz-wsAPIM', variables('deploymentSuffix')), 35)]",
@@ -2190,7 +2190,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').mgmtGroupDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -2208,7 +2208,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').roleDefsDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]",
@@ -2227,7 +2227,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').policyDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]",
@@ -2250,7 +2250,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').initiativeDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').policyDeploymentName)]",
@@ -2275,7 +2275,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').monitorPolicyDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]",
@@ -2359,7 +2359,7 @@
                         "value": "[parameters('monitorAlertsResourceGroup')]"
                     },
                     "ALZMonitorResourceGroupLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "ALZMonitorActionGroupEmail": {
                         "value": "[if(empty(parameters('ambaAgEmailContact')), null(), array(parameters('ambaAgEmailContact')))]"
@@ -2378,7 +2378,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').monitorPolicyLiteDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').mgmtGroupLiteDeploymentName)]",
@@ -2461,7 +2461,7 @@
                         "value": "[parameters('monitorAlertsResourceGroup')]"
                     },
                     "ALZMonitorResourceGroupLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "ALZMonitorActionGroupEmail": {
                         "value": "[if(empty(parameters('ambaAgEmailContact')), null(), array(parameters('ambaAgEmailContact')))]"
@@ -2481,7 +2481,7 @@
             "apiVersion": "2024-01-01",
             "name": "alz-prerequisites",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[variables('deploymentNames').initiativeDeploymentName]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]"
@@ -2494,7 +2494,7 @@
                 },
                 "parameters": {
                     "location": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "eslzRootName": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
@@ -2511,7 +2511,7 @@
             "apiVersion": "2024-01-01",
             "name": "alz-prerequisites",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[variables('deploymentNames').initiativeDeploymentName]",
                 "[variables('esLiteDeploymentNames').mgmtGroupLiteDeploymentName]"
@@ -2524,7 +2524,7 @@
                 },
                 "parameters": {
                     "location": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "eslzRootName": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
@@ -2541,7 +2541,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').secSubscriptionPlacement]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').securityManagementGroup]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]"
@@ -2567,7 +2567,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').mgmtSubscriptionPlacement]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').managementManagementGroup]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]"
@@ -2593,7 +2593,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').connectivitySubscriptionPlacement]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]"
@@ -2619,7 +2619,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').identitySubscriptionPlacement]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]"
@@ -2647,7 +2647,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').monitoringDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
@@ -2667,7 +2667,7 @@
                         "value": "[variables('platformResourceNames').logAnalyticsWorkspace]"
                     },
                     "workspaceRegion": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "retentionInDays": {
                         "value": "[parameters('retentionInDays')]"
@@ -2680,7 +2680,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]"
@@ -2696,7 +2696,7 @@
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
                     },
                     "WorkspaceLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "userGivenDcrName": {
                         "value": "[variables('platformResourceNames').dataCollectionRuleVmInsights]"
@@ -2709,7 +2709,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]"
@@ -2725,7 +2725,7 @@
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
                     },
                     "WorkspaceLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "dataCollectionRuleName": {
                         "value": "[variables('platformResourceNames').dataCollectionRuleChangeTracking]"
@@ -2738,7 +2738,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').dataCollectionRuleMdfcDefenderSQLDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]"
@@ -2754,7 +2754,7 @@
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
                     },
                     "WorkspaceLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "userGivenDcrName": {
                         "value": "[variables('platformResourceNames').dataCollectionRuleMdfcDefenderSql]"
@@ -2767,7 +2767,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').userAssignedIdentityDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]"
@@ -2780,7 +2780,7 @@
                 },
                 "parameters": {
                     "location": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "userAssignedIdentityName": {
                         "value": "[variables('platformResourceNames').userAssignedIdentity]"
@@ -2797,7 +2797,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('mgmtGroupsArray')[copyIndex()], variables('deploymentNames').diagnosticSettingsforMGsDeploymentName), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', variables('mgmtGroupsArray')[copyIndex()])]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLitedeploymentNames').platformLiteSubscriptionPlacement)]",
@@ -2827,7 +2827,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('mgmtGroupsESLiteArray')[copyIndex()], variables('deploymentNames').diagnosticSettingsforMGsDeploymentName), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', variables('mgmtGroupsESLiteArray')[copyIndex()])]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLitedeploymentNames').platformLiteSubscriptionPlacement)]",
@@ -2857,7 +2857,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').asbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "alz-prerequisites",
@@ -2879,7 +2879,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').monitorServiceHealthBuiltInDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "alz-prerequisites"
@@ -2892,7 +2892,7 @@
                 },
                 "parameters": {
                     "resourceGroupLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "topLevelManagementGroupPrefix": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
@@ -2915,7 +2915,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsCMKDeploymentName, '-', replace(parameters('wsCMKSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCMKSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -2964,7 +2964,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsAPIMDeploymentName, '-', replace(parameters('wsAPIMSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAPIMSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3013,7 +3013,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsAppServicesDeploymentName, '-', replace(parameters('wsAppServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAppServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3062,7 +3062,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsAutomationDeploymentName, '-', replace(parameters('wsAutomationSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAutomationSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3111,7 +3111,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsBotServiceDeploymentName, '-', replace(parameters('wsBotServiceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsBotServiceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3160,7 +3160,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsCognitiveServicesDeploymentName, '-', replace(parameters('wsCognitiveServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCognitiveServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3209,7 +3209,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsComputeDeploymentName, '-', replace(parameters('wsComputeSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsComputeSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3258,7 +3258,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerAppsDeploymentName, '-', replace(parameters('wsContainerAppsSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerAppsSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3307,7 +3307,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerInstanceDeploymentName, '-', replace(parameters('wsContainerInstanceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerInstanceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3356,7 +3356,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerRegistryDeploymentName, '-', replace(parameters('wsContainerRegistrySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerRegistrySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3405,7 +3405,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsCosmosDbDeploymentName, '-', replace(parameters('wsCosmosDbSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCosmosDbSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3454,7 +3454,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsDataExplorerDeploymentName, '-', replace(parameters('wsDataExplorerSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsDataExplorerSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3503,7 +3503,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsDataFactoryDeploymentName, '-', replace(parameters('wsDataFactorySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsDataFactorySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3552,7 +3552,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsEventGridDeploymentName, '-', replace(parameters('wsEventGridSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsEventGridSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3601,7 +3601,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsEventHubDeploymentName, '-', replace(parameters('wsEventHubSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsEventHubSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3650,7 +3650,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsKeyVaultSupDeploymentName, '-', replace(parameters('wsKeyVaultSupSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsKeyVaultSupSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3699,7 +3699,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsKubernetesDeploymentName, '-', replace(parameters('wsKubernetesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsKubernetesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3748,7 +3748,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsMachineLearningDeploymentName, '-', replace(parameters('wsMachineLearningSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsMachineLearningSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3797,7 +3797,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsMySQLDeploymentName, '-', replace(parameters('wsMySQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsMySQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3846,7 +3846,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsNetworkDeploymentName, '-', replace(parameters('wsNetworkSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsNetworkSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3898,7 +3898,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsOpenAIDeploymentName, '-', replace(parameters('wsOpenAISelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsOpenAISelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3947,7 +3947,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsPostgreSQLDeploymentName, '-', replace(parameters('wsPostgreSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsPostgreSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -3996,7 +3996,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsServiceBusDeploymentName, '-', replace(parameters('wsServiceBusSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsServiceBusSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -4045,7 +4045,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsSQLDeploymentName, '-', replace(parameters('wsSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -4094,7 +4094,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsStorageDeploymentName, '-', replace(parameters('wsStorageSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsStorageSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -4143,7 +4143,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsSynapseDeploymentName, '-', replace(parameters('wsSynapseSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsSynapseSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -4192,7 +4192,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').wsVirtualDesktopDeploymentName, '-', replace(parameters('wsVirtualDesktopSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsVirtualDesktopSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -4241,7 +4241,7 @@
             "apiVersion": "2024-01-01",
             "name": "[take(concat(variables('deploymentNames').regulatoryComplianceInitativesToAssignDeploymentName, if(contains(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, '-'), split(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, '-')[1], parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg), '-', uniqueString(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].policy.id)), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
@@ -4385,7 +4385,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').resourceDiagnosticsPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLitedeploymentNames').platformLiteSubscriptionPlacement)]",
@@ -4417,7 +4417,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').activityDiagnosticsPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').monitoringLiteDeploymentName)]"
@@ -4444,7 +4444,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').costOptimizationDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -4467,7 +4467,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').trustedLaunchDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -4490,7 +4490,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').zoneResilientDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -4513,7 +4513,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').resourceRgLocationDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -4536,7 +4536,7 @@
             "apiVersion": "2024-01-01",
             "name": "[concat(variables('deploymentNames').MDFCSubscriptionEnableDeploymentName, copyIndex())]",
             "subscriptionId": "[variables('subscriptionIds')[copyIndex()]]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').connectivitySubscriptionPlacement)]",
@@ -4563,7 +4563,7 @@
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
                     },
                     "resourceGroupLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "resourceGroupName": {
                         "value": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-asc-export')]"
@@ -4616,7 +4616,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ascPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').monitoringLiteDeploymentName)]"
@@ -4682,7 +4682,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').atpOssDbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]"
             ],
@@ -4708,7 +4708,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').atpSqlDbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]"
             ],
@@ -4734,7 +4734,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').mdEndpointsDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]"
             ],
@@ -4760,7 +4760,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').mdEndpointsAMADeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]"
             ],
@@ -4786,7 +4786,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').denyClassicResourcePolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments',variables('esLiteDeploymentNames').mgmtGroupLiteDeploymentName)]"
@@ -4813,7 +4813,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').denyVMUnmanagedDiskPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -4836,7 +4836,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ascGovPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').monitoringLiteDeploymentName)]"
@@ -4881,7 +4881,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').denyActionDeleteUAMIAMAPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -4911,7 +4911,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ddosRgDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').connectivitySubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -4970,7 +4970,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ddosHubPolicyDeploymentName]",
             "scope": "[variables('scopes').connectivityManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ddosDeploymentName)]"
             ],
@@ -5008,7 +5008,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ascGovPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ddosDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -5104,7 +5104,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ddosDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -5181,7 +5181,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ascGovPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ddosDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -5310,7 +5310,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ddosDeploymentName)]",
                 "alz-prerequisites"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -5349,7 +5349,7 @@
                 "dnsZonesLite",
                 "alz-prerequisites"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -5380,7 +5380,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').avnmPolicyDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').avnmConnectivityHubDeploymentName)]"
@@ -5412,7 +5412,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').avnmLitePolicyDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').avnmLiteConnectivityHubDeploymentName)]"
@@ -5448,7 +5448,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').privateDnsZoneRgDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').connectivitySubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -5528,7 +5528,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').privateDnsZoneRg2DeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').connectivitySubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -5616,7 +5616,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ascGovPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ddosDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -5711,7 +5711,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ascGovPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ddosDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -5919,7 +5919,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').privateDnsPolicyDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtGroupDeploymentName)]",
@@ -5955,7 +5955,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').dnsZoneRoleAssignmentDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[variables('singleVsDedicatedConnectivitySub')]",
             "dependsOn": [
                 "[variables('deploymentNames').privateDnsPolicyDeploymentName]"
@@ -5985,7 +5985,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azVmMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName)]",
@@ -6022,7 +6022,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azVmMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName)]",
@@ -6062,7 +6062,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azVmssMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName)]",
@@ -6099,7 +6099,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azVmssMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName)]",
@@ -6139,7 +6139,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azVmHybridMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName)]"
@@ -6172,7 +6172,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azVmHybridMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName)]"
@@ -6208,7 +6208,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azureUpdateManagerPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6240,7 +6240,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azureUpdateManagerPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6272,7 +6272,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName)]",
@@ -6309,7 +6309,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName)]",
@@ -6349,7 +6349,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmssDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName)]",
@@ -6386,7 +6386,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmssDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName)]",
@@ -6426,7 +6426,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmArcDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName)]"
@@ -6459,7 +6459,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmArcDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName)]"
@@ -6495,7 +6495,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').MDFCDefenderSqlAmaDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').userAssignedIdentityDeploymentName)]"
@@ -6514,7 +6514,7 @@
                         "value": "[if(equals(parameters('enableVmMonitoring'), 'Yes'), 'Default', 'DoNotEnforce')]"
                     },
                     "workspaceRegion": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "userWorkspaceResourceId": {
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
@@ -6543,7 +6543,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').MDFCDefenderSqlAmaDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').monitoringDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').userAssignedIdentityDeploymentName)]"
@@ -6562,7 +6562,7 @@
                         "value": "[if(equals(parameters('enableVmMonitoring'), 'Yes'), 'Default', 'DoNotEnforce')]"
                     },
                     "workspaceRegion": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "userWorkspaceResourceId": {
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
@@ -6594,7 +6594,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azBackupLzPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6620,7 +6620,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ddosLzPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ddosDeploymentName)]"
             ],
@@ -6649,7 +6649,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').aksPrivEscalationPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6672,7 +6672,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').aksPrivilegedPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6695,7 +6695,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').aksHttpsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6718,7 +6718,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').tlsSslPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6744,7 +6744,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ipFwPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6767,7 +6767,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').publicEndpointPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6793,7 +6793,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pipOnNicPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6816,7 +6816,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').mgmtFromInternetPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6842,7 +6842,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').privateSubnetDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6868,7 +6868,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').privateSubnetDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6894,7 +6894,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').storageHttpsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6917,7 +6917,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').kvGuardrailsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6943,7 +6943,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').kvGuardrailsPolicyPlatDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6969,7 +6969,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').backupPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -6995,7 +6995,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').backupPlatPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7021,7 +7021,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').guestAttPlatPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7050,7 +7050,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').guestAttLZPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7079,7 +7079,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').denyHybridNetworkingPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7102,7 +7102,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').auditPeDnsZonesPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7131,7 +7131,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').auditAppGWWafPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7154,7 +7154,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').enforceACSBPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7180,7 +7180,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').subnetNsgPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7206,7 +7206,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').sqlAuditPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').mgmtSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLitedeploymentNames').platformLiteSubscriptionPlacement)]",
@@ -7237,7 +7237,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').sqlAuditRoleAssignmentDeploymentName1]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[variables('singleVsDedicatedMgmtSub')]",
             "dependsOn": [
                 "[variables('deploymentNames').sqlAuditPolicyDeploymentName]"
@@ -7266,7 +7266,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').sqlAuditRoleAssignmentDeploymentName2]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[variables('singleVsDedicatedMgmtSub')]",
             "dependsOn": [
                 "[variables('deploymentNames').sqlAuditPolicyDeploymentName]"
@@ -7296,7 +7296,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').sqlEncryptionPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7322,7 +7322,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').sqlThreatPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7348,7 +7348,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').decommissionPolicyDeploymentName]",
             "scope": "[variables('scopes').decommissionedManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7374,7 +7374,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').sandboxPolicyDeploymentName]",
             "scope": "[variables('scopes').sandboxManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7400,7 +7400,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').azBackupIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites"
             ],
@@ -7426,7 +7426,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pipPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').identitySubscriptionPlacement)]"
@@ -7450,7 +7450,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').subnetNsgIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').identitySubscriptionPlacement)]"
@@ -7477,7 +7477,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').mgmtFromInternetIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').identitySubscriptionPlacement)]"
@@ -7688,7 +7688,7 @@
             "apiVersion": "2024-01-01",
             "name": "[concat(variables('deploymentNames').onlineLzSubs, copyIndex())]",
             "scope": "[variables('scopes').onlineManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').policyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -7722,7 +7722,7 @@
             "apiVersion": "2024-01-01",
             "name": "[concat(variables('deploymentNames').corpLzSubs, copyIndex())]",
             "scope": "[variables('scopes').corpManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').policyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -7756,7 +7756,7 @@
             "apiVersion": "2024-01-01",
             "name": "[concat(variables('deploymentNames').corpConnectedMoveLzSubs, copyIndex())]",
             "scope": "[variables('scopes').corpManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').policyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -7843,7 +7843,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').mgmtGroupLiteDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -7863,7 +7863,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').mgmtGroupLiteDeploymentName)]"
@@ -7889,7 +7889,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').monitoringLiteDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esliteDeploymentNames').platformLiteSubscriptionPlacement)]",
@@ -7909,7 +7909,7 @@
                         "value": "[variables('platformResourceNames').logAnalyticsWorkspace]"
                     },
                     "workspaceRegion": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "retentionInDays": {
                         "value": "[parameters('retentionInDays')]"
@@ -7922,7 +7922,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').userAssignedIdentityLiteDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').monitoringLiteDeploymentName)]"
@@ -7935,7 +7935,7 @@
                 },
                 "parameters": {
                     "location": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "userAssignedIdentityName": {
                         "value": "[variables('platformResourceNames').userAssignedIdentity]"
@@ -7952,7 +7952,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').ddosRgLiteDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -8007,7 +8007,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('esLitedeploymentNames').privateDnsZoneRgLiteDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -8041,7 +8041,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('esLitedeploymentNames').privateDnsZoneRgLite2DeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
@@ -8163,7 +8163,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').ddosHubLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').ddosLiteDeploymentName)]"
             ],
@@ -8199,7 +8199,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ascGovPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').ddosHubLitePolicyDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -8292,7 +8292,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ascGovPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').ddosHubLitePolicyDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -8369,7 +8369,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').activityDiagnosticsPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').resourceDiagnosticsPolicyDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -8492,7 +8492,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ascGovPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').ddosHubLitePolicyDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -8585,7 +8585,7 @@
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').ascGovPolicyDeploymentName)]",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').ddosHubLitePolicyDeploymentName)]"
             ],
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -8796,7 +8796,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleVmInsightsLiteDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').monitoringLiteDeploymentName)]"
@@ -8812,7 +8812,7 @@
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
                     },
                     "WorkspaceLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "userGivenDcrName": {
                         "value": "[variables('platformResourceNames').dataCollectionRuleVmInsights]"
@@ -8825,7 +8825,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleChangeTrackingLiteDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').monitoringLiteDeploymentName)]"
@@ -8841,7 +8841,7 @@
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
                     },
                     "WorkspaceLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "dataCollectionRuleName": {
                         "value": "[variables('platformResourceNames').dataCollectionRuleChangeTracking]"
@@ -8854,7 +8854,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-01-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleMdfcDefenderSQLLiteDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').monitoringLiteDeploymentName)]"
@@ -8870,7 +8870,7 @@
                         "value": "[variables('platformResourceIds').logAnalyticsResourceId]"
                     },
                     "WorkspaceLocation": {
-                        "value": "[deployment().location]"
+                        "value": "[parameters('connectivityLocation')]"
                     },
                     "userGivenDcrName": {
                         "value": "[variables('platformResourceNames').dataCollectionRuleMdfcDefenderSql]"
@@ -8884,7 +8884,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('esLitedeploymentNames').azBackupIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement)]"
             ],
@@ -8910,7 +8910,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('esLitedeploymentNames').subnetNsgIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement)]"
@@ -8937,7 +8937,7 @@
             "apiVersion": "2024-01-01",
             "name": "[variables('esLitedeploymentNames').mgmtFromInternetIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "alz-prerequisites",
                 "[resourceId('Microsoft.Resources/deployments', variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement)]"
@@ -8962,7 +8962,7 @@
             "condition": "[equals(parameters('telemetryOptOut'), 'No')]",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
@@ -8977,7 +8977,7 @@
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameSinglePlatformSub]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
@@ -8992,7 +8992,7 @@
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), empty(parameters('singlePlatformSubscriptionId')))]",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameMultiPlatformSubs]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
@@ -9007,7 +9007,7 @@
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableHub'), 'No'))]",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingNone]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
@@ -9022,7 +9022,7 @@
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')))]",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingHubSpoke]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
@@ -9037,7 +9037,7 @@
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableHub'), 'vwan'))]",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingVirtualWan]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
@@ -9052,7 +9052,7 @@
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableMonitorBaselines'), 'Yes'))]",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').ambaPortalPidCuaDeploymentName]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
@@ -9067,7 +9067,7 @@
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
             "apiVersion": "2024-01-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameSecondaryRegion]",
-            "location": "[deployment().location]",
+            "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "Incremental",
