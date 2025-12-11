@@ -7722,7 +7722,7 @@
             }
         },
         {
-            "condition": "[not(empty(parameters('corpConnectedLzSubscriptionId')))]",
+            "condition": "[and(not(empty(parameters('corpConnectedLzSubscriptionId'))), greater(length(parameters('corpConnectedLzSubscriptionId')), 0))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').corpConnectedMoveLzSubs, copyIndex())]",
@@ -7756,11 +7756,11 @@
             }
         },
         {
-            "condition": "[and(or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('corpConnectedLzSubscriptionId'))))]",
+            "condition": "[and(or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('corpConnectedLzSubscriptionId'))), greater(length(parameters('corpConnectedLzSubscriptionId')), 0))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').corpPeeringDeploymentName, copyIndex())]",
-            "subscriptionId": "[if(not(empty(parameters('corpConnectedLzSubscriptionId'))), parameters('corpConnectedLzSubscriptionId')[copyIndex()].subs, '')]",
+            "subscriptionId": "[parameters('corpConnectedLzSubscriptionId')[copyIndex()].subs]",
             "location": "[parameters('connectivityLocation')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', variables('deploymentNames').vnetConnectivityHubDeploymentName)]",
