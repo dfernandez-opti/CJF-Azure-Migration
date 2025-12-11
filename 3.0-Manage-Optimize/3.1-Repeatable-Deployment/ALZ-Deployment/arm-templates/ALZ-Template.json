@@ -8764,7 +8764,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), or(empty(parameters('managementSubscriptionId')), not(equals(parameters('managementSubscriptionId'), parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleVmInsightsLiteDeploymentName]",
@@ -8793,7 +8793,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), or(empty(parameters('managementSubscriptionId')), not(equals(parameters('managementSubscriptionId'), parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleChangeTrackingLiteDeploymentName]",
@@ -8822,7 +8822,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), or(empty(parameters('managementSubscriptionId')), not(equals(parameters('managementSubscriptionId'), parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleMdfcDefenderSQLLiteDeploymentName]",
