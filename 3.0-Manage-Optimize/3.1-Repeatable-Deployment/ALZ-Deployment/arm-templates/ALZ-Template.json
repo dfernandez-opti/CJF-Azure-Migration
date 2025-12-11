@@ -1100,15 +1100,6 @@
                 "No"
             ]
         },
-        "delayCount": {
-            "type": "int",
-            "defaultValue": 55,
-            "minValue": 1,
-            "maxValue": 60,
-            "metadata": {
-                "description": "Configure the count of empty deployments used to introduce a delay after policy deployment. Used to increase reliability of deployment, but can be reduced when re-deploying to an existing environment."
-            }
-        },
         "currentDateTimeUtcNow": {
             "type": "string",
             "defaultValue": "[utcNow()]",
