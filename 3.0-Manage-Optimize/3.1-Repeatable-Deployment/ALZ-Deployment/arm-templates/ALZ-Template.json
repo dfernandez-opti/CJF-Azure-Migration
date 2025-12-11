@@ -575,10 +575,6 @@
                 "No"
             ]
         },
-        "privateDnsZonesToDeploySecondary": {
-            "type": "array",
-            "defaultValue": []
-        },
         "enableVpnGwSecondary": {
             "type": "string",
             "defaultValue": "No",
