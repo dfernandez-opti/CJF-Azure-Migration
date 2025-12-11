@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "enterpriseScaleCompanyPrefix": {
-      "value": "cjf"
+      "value": "CJF"
     },
     "singlePlatformSubscriptionId": {
       "value": "922fcb86-d9bc-4c9a-8782-b4f40a87559e"
@@ -118,7 +118,7 @@
     },
     "ambaAgArmRole": {
       "value": [
-        "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+        "Owner"
       ]
     },
     "enableAMBAHybridVM": {
