@@ -2353,7 +2353,7 @@
                         "value": "[if(empty(parameters('ambaAgServiceHook')), null(), array(parameters('ambaAgServiceHook')))]"
                     },
                     "ALZArmRoleId": {
-                        "value": "[array(parameters('ambaAgArmRole'))]"
+                        "value": "[array(subscriptionResourceId('Microsoft.Authorization/roleDefinitions', parameters('ambaAgArmRole')))]"
                     },
                     "ALZMonitorResourceGroupName": {
                         "value": "[parameters('monitorAlertsResourceGroup')]"
@@ -2455,7 +2455,7 @@
                         "value": "[if(empty(parameters('ambaAgServiceHook')), null(), array(parameters('ambaAgServiceHook')))]"
                     },
                     "ALZArmRoleId": {
-                        "value": "[array(parameters('ambaAgArmRole'))]"
+                        "value": "[array(subscriptionResourceId('Microsoft.Authorization/roleDefinitions', parameters('ambaAgArmRole')))]"
                     },
                     "ALZMonitorResourceGroupName": {
                         "value": "[parameters('monitorAlertsResourceGroup')]"
