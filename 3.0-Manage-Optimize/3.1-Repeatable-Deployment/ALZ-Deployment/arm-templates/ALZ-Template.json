@@ -1779,7 +1779,7 @@
             "VMUnmanagedDiskPolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/DENY-VMUnmanagedDiskPolicyAssignment.json",
             "diagnosticSettingsforManagementGroups": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/diagSettingsMGs/diagSettingsMGs.json",
             "privateSubnetPolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/ENFORCE-SubnetPrivatePolicyAssignment.json",
-            "monitorPolicyDefinitions": "[uri(variables('rootUris').monitorRepo, 'patterns/alz/alzArm.json",
+            "monitorPolicyDefinitions": "[uri(variables('rootUris').monitorRepo, 'patterns/alz/alzArm.json')]",
             "azureUpdateManagerPolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/MODIFY-AUM-CheckUpdatesPolicyAssignment.json",
             "dataCollectionRuleChangeTracking": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/resourceGroupTemplates/dataCollectionRule-CT.json",
             "ChangeTrackingVmPolicyAssignment": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/policyAssignments/DINE-ChangeTrackingVMPolicyAssignment.json",
