@@ -8619,7 +8619,7 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHubSecondary'), 'vhub')), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
+            "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('connectivitySubscriptionId')), not(equals(parameters('connectivitySubscriptionId'), parameters('singlePlatformSubscriptionId'))), or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHubSecondary'), 'vhub')), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').hubPeeringDeploymentName]",
