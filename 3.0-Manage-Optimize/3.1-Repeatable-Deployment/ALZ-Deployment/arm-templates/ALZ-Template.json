@@ -1714,7 +1714,6 @@
         "rootUris": {
             "monitorRepo": "https://raw.githubusercontent.com/Azure/azure-monitor-baseline-alerts/2025-07-02/"
         },
-        "azPrivateDnsPolicyAssignment": "[if(equals(environment().name, 'AzureUSGovernment'), 'managementGroupTemplates/policyAssignments/gov/fairfaxDINE-PrivateDNSZonesPolicyAssignment.json', 'managementGroupTemplates/policyAssignments/DINE-PrivateDNSZonesPolicyAssignment.json",
         "deploymentUris": {
             "managementGroups": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/mgmtGroupStructure/mgmtGroups.json",
             "managementGroupsLite": "https://raw.githubusercontent.com/Azure/Enterprise-Scale/main/eslzArm/managementGroupTemplates/mgmtGroupStructure/mgmtGroupsLite.json",
