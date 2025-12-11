@@ -1661,12 +1661,6 @@
         "regCompPolParSoc2Type2MaxMemoryBytes": {
             "type": "string",
             "defaultValue": "1Gi"
-        },
-        "listOfResourceTypesDisallowedForDeletion": {
-            "type": "array",
-            "defaultValue": [
-                "microsoft.managedidentity/userassignedidentities"
-            ]
         }
     },
     "variables": {
