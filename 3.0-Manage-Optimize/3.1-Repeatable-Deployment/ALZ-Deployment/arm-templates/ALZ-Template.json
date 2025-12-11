@@ -2042,7 +2042,7 @@
         "singleVsDedicatedMgmtSub": "[if(empty(parameters('managementSubscriptionId')), parameters('singlePlatformSubscriptionId'), parameters('managementSubscriptionId'))]",
         "singleVsDedicatedConnectivitySub": "[if(empty(parameters('connectivitySubscriptionId')), parameters('singlePlatformSubscriptionId'), parameters('connectivitySubscriptionId'))]",
         "platformResourceIds": {
-            "logAnalyticsResourceId": "[subscriptionResourceId(variables('singleVsDedicatedMgmtSub'), 'Microsoft.OperationalInsights/workspaces', variables('platformResourceNames').logAnalyticsWorkspace)]",
+            "logAnalyticsResourceId": "[if(equals(parameters('enterpriseScaleCompanyPrefix'), 'CJF'), '/subscriptions/922fcb86-d9bc-4c9a-8782-b4f40a87559e/resourceGroups/CJF-mgmt/providers/Microsoft.OperationalInsights/workspaces/CJF-law', subscriptionResourceId(variables('singleVsDedicatedMgmtSub'), 'Microsoft.OperationalInsights/workspaces', variables('platformResourceNames').logAnalyticsWorkspace))]",
             "dataCollectionRuleVmInsightsResourceId": "[subscriptionResourceId(variables('singleVsDedicatedMgmtSub'), 'Microsoft.Insights/dataCollectionRules', variables('platformResourceNames').dataCollectionRuleVmInsights)]",
             "dataCollectionRuleChangeTrackingResourceId": "[subscriptionResourceId(variables('singleVsDedicatedMgmtSub'), 'Microsoft.Insights/dataCollectionRules', variables('platformResourceNames').dataCollectionRuleChangeTracking)]",
             "dataCollectionRuleMdfcDefenderSQLResourceId": "[subscriptionResourceId(variables('singleVsDedicatedMgmtSub'), 'Microsoft.Insights/dataCollectionRules', variables('platformResourceNames').dataCollectionRuleMdfcDefenderSql)]",
