@@ -86,9 +86,6 @@
     "enableMDEndpoints": {
       "value": "DeployIfNotExists"
     },
-    "enableSecuritySolution": {
-      "value": null
-    },
     "enableServiceHealth": {
       "value": null
     },
@@ -251,9 +248,6 @@
     },
     "enablePrivateDnsZonesSecondary": {
       "value": "No"
-    },
-    "privateDnsZonesToDeploySecondary": {
-      "value": null
     },
     "enableVpnGwSecondary": {
       "value": "No"
@@ -460,9 +454,6 @@
     },
     "enforceAcsb": {
       "value": "Audit"
-    },
-    "delayCount": {
-      "value": null
     },
     "currentDateTimeUtcNow": {
       "value": null
@@ -798,9 +789,6 @@
       "value": null
     },
     "regCompPolParSoc2Type2MaxMemoryBytes": {
-      "value": null
-    },
-    "listOfResourceTypesDisallowedForDeletion": {
       "value": null
     }
   }

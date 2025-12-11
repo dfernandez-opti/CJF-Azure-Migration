@@ -132,7 +132,7 @@ jobs:
         run: |
           TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
           PARAMETERS_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Parameters.json"
-          az deployment sub validate \
+          az deployment tenant validate \
             --location ${{ env.LOCATION }} \
             --template-uri $TEMPLATE_URL \
             --parameters @$PARAMETERS_FILE
@@ -180,7 +180,7 @@ jobs:
           DEPLOYMENT_NAME="alz-deployment-$(date +%s)"
           TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
           PARAMETERS_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Parameters.json"
-          az deployment sub create \
+          az deployment tenant create \
             --name $DEPLOYMENT_NAME \
             --location ${{ env.LOCATION }} \
             --template-uri $TEMPLATE_URL \
@@ -192,7 +192,7 @@ jobs:
 
       - name: Get Deployment Status
         run: |
-          az deployment sub show \
+          az deployment tenant show \
             --name ${{ steps.deploy.outputs.deployment_name }} \
             --query "{provisioningState:properties.provisioningState,correlationId:properties.correlationId,timestamp:properties.timestamp}" \
             --output json > deployment-status.json
@@ -277,12 +277,32 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install syft (with retries)
+        run: |
+          set -euo pipefail
+          TAG='v1.38.2'
+          DIST="syft_${TAG#v}_linux_amd64.tar.gz"
+          URL="https://github.com/anchore/syft/releases/download/${TAG}/${DIST}"
+          TMPDIR="$(mktemp -d)"
+          cd "$TMPDIR"
+          attempts=0
+          until curl -fsSL --retry 5 --retry-delay 2 -o "$DIST" "$URL"; do
+            attempts=$((attempts+1))
+            echo "Download attempt $attempts failed"
+            if [ "$attempts" -ge 5 ]; then
+              echo "Failed to download syft after $attempts attempts"
+              exit 1
+            fi
+            sleep $((attempts*2))
+          done
+          tar -xzf "$DIST"
+          sudo mv syft /usr/local/bin/
+          syft version
+
       - name: Generate SBOM
-        uses: anchore/sbom-action@v0
-        with:
-          path: .
-          format: spdx-json
-          output-file: sbom.spdx.json
+        run: |
+          set -euo pipefail
+          syft . -o spdx-json=sbom.spdx.json
 
       - name: Upload SBOM
         uses: actions/upload-artifact@v4

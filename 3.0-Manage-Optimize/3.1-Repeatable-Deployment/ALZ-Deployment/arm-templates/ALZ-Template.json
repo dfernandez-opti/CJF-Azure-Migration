@@ -2040,7 +2040,6 @@
             "identityVnetSecondary": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-vnet-', parameters('connectivityLocationSecondary'))]",
             "lzVnet": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-vnet-', parameters('connectivityLocation'))]"
         },
-        "singleVsDedicatedSecuritySub": "[if(empty(parameters('securitySubscriptionId')), parameters('singlePlatformSubscriptionId'), parameters('securitySubscriptionId'))]",
         "singleVsDedicatedMgmtSub": "[if(empty(parameters('managementSubscriptionId')), parameters('singlePlatformSubscriptionId'), parameters('managementSubscriptionId'))]",
         "singleVsDedicatedConnectivitySub": "[if(empty(parameters('connectivitySubscriptionId')), parameters('singlePlatformSubscriptionId'), parameters('connectivitySubscriptionId'))]",
         "platformResourceIds": {

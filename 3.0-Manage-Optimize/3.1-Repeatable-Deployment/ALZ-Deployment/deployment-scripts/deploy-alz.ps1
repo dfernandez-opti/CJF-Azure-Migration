@@ -119,11 +119,10 @@ if (-not $rg) {
 
 # Validate template
 Write-Log "Validating ARM template..."
-$validationResult = az deployment sub validate `
+$validationResult = az deployment tenant validate `
     --location $Location `
     --template-file $templatePath `
-    --parameters @$parametersPath `
-    --subscription $SubscriptionId 2>&1
+    --parameters @$parametersPath 2>&1
 
 if ($LASTEXITCODE -ne 0) {
     Write-Log "Template validation failed" "ERROR"
@@ -142,12 +141,11 @@ if ($ValidateOnly) {
 Write-Log "Starting deployment: $DeploymentName"
 Write-Log "This may take 30-60 minutes..."
 
-$deploymentResult = az deployment sub create `
+$deploymentResult = az deployment tenant create `
     --name $DeploymentName `
     --location $Location `
     --template-file $templatePath `
     --parameters @$parametersPath `
-    --subscription $SubscriptionId `
     --verbose 2>&1
 
 if ($LASTEXITCODE -ne 0) {
@@ -160,9 +158,8 @@ Write-Log "Deployment completed successfully" "SUCCESS"
 
 # Get deployment status
 Write-Log "Retrieving deployment status..."
-$deploymentStatus = az deployment sub show `
-    --name $DeploymentName `
-    --subscription $SubscriptionId | ConvertFrom-Json
+$deploymentStatus = az deployment tenant show `
+    --name $DeploymentName | ConvertFrom-Json
 
 Write-Log "Deployment State: $($deploymentStatus.properties.provisioningState)"
 Write-Log "Correlation ID: $($deploymentStatus.properties.correlationId)"
