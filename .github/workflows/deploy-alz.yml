@@ -178,22 +178,17 @@ jobs:
 
       - name: Validate ARM Template
         run: |
-          # Use main branch for validation to ensure stable URLs for nested templates
-          TEMPLATE_URL="https://raw.githubusercontent.com/${{ github.repository }}/main/3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
           PARAMETERS_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Parameters.json"
-          echo "Validating template from: $TEMPLATE_URL"
-          echo "Checking template accessibility..."
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$TEMPLATE_URL")
-          if [ "$HTTP_CODE" != "200" ]; then
-            echo "Warning: Template URL returned HTTP $HTTP_CODE"
-            echo "Attempting to fetch template..."
-            curl -I "$TEMPLATE_URL" || echo "Template may not be accessible"
-          else
-            echo "Template URL is accessible (HTTP 200)"
-          fi
+          TEMPLATE_FILE="3.0-Manage-Optimize/3.1-Repeatable-Deployment/ALZ-Deployment/arm-templates/ALZ-Template.json"
+          
+          echo "Validating template from local file: $TEMPLATE_FILE"
+          echo "This ensures nested templates can resolve their URIs correctly"
+          
+          # Validate using local file instead of URL to avoid InvalidContentLink errors
+          # with nested templates that reference deployment().properties.templateLink.uri
           az deployment tenant validate \
             --location ${{ env.LOCATION }} \
-            --template-uri "$TEMPLATE_URL" \
+            --template-file "$TEMPLATE_FILE" \
             --parameters @$PARAMETERS_FILE
 
       - name: Export Validation Results
