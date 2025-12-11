@@ -2160,7 +2160,7 @@
         {
             "condition": "[empty(parameters('singlePlatformSubscriptionId'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').mgmtGroupDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "properties": {
@@ -2178,7 +2178,7 @@
         },
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').roleDefsDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2197,7 +2197,7 @@
 
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').policyDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2220,7 +2220,7 @@
         },
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').initiativeDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2245,7 +2245,7 @@
         {
             "condition": "[and(empty(parameters('singlePlatformSubscriptionId')), or(equals(parameters('enableMonitorBaselines'), 'Yes'), equals(parameters('enableServiceHealth'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').monitorPolicyDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2348,7 +2348,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), or(equals(parameters('enableMonitorBaselines'), 'Yes'), equals(parameters('enableServiceHealth'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').monitorPolicyLiteDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2450,7 +2450,7 @@
         {
             "condition": "[not(empty(parameters('managementSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "alz-prerequisites",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -2480,7 +2480,7 @@
         {
             "condition": "[not(empty(parameters('singlePlatformSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "alz-prerequisites",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -2511,7 +2511,7 @@
         {
             "condition": "[not(empty(parameters('securitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').secSubscriptionPlacement]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').securityManagementGroup]",
@@ -2537,7 +2537,7 @@
         {
             "condition": "[not(empty(parameters('managementSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').mgmtSubscriptionPlacement]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').managementManagementGroup]",
@@ -2563,7 +2563,7 @@
         {
             "condition": "[not(empty(parameters('connectivitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').connectivitySubscriptionPlacement]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').connectivityManagementGroup]",
@@ -2589,7 +2589,7 @@
         {
             "condition": "[not(empty(parameters('identitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').identitySubscriptionPlacement]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').identityManagementGroup]",
@@ -2617,7 +2617,7 @@
         {
             "condition": "[and(equals(parameters('enableLogAnalytics'), 'Yes'), not(empty(parameters('managementSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').monitoringDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2650,7 +2650,7 @@
         {
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2679,7 +2679,7 @@
         {
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2708,7 +2708,7 @@
         {
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').dataCollectionRuleMdfcDefenderSQLDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2737,7 +2737,7 @@
         {
             "condition": "[and(equals(parameters('enableLogAnalytics'), 'Yes'), not(empty(parameters('managementSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').userAssignedIdentityDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2766,7 +2766,7 @@
         {
                         "condition": "[and(empty(parameters('singlePlatformSubscriptionId')), not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('mgmtGroupsArray')[copyIndex()], variables('deploymentNames').diagnosticSettingsforMGsDeploymentName), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', variables('mgmtGroupsArray')[copyIndex()])]",
             "location": "[parameters('connectivityLocation')]",
@@ -2796,7 +2796,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('managementSubscriptionId')), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('mgmtGroupsESLiteArray')[copyIndex()], variables('deploymentNames').diagnosticSettingsforMGsDeploymentName), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', variables('mgmtGroupsESLiteArray')[copyIndex()])]",
             "location": "[parameters('connectivityLocation')]",
@@ -2826,7 +2826,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAsc'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').asbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -2848,7 +2848,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableServiceHealthBuiltIn'), 'Yes'), equals(parameters('enableServiceHealth'), 'No'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').monitorServiceHealthBuiltInDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -2884,7 +2884,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsCMKInitiatives'), 'Yes'), equals(parameters('enableWsCMKInitiatives'), 'Audit')), not(empty(parameters('wsCMKSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsCMKDeploymentName, '-', replace(parameters('wsCMKSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCMKSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -2933,7 +2933,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsAPIMInitiatives'), 'Yes'), equals(parameters('enableWsAPIMInitiatives'), 'Audit')), not(empty(parameters('wsAPIMSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsAPIMDeploymentName, '-', replace(parameters('wsAPIMSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAPIMSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -2982,7 +2982,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsAppServicesInitiatives'), 'Yes'), equals(parameters('enableWsAppServicesInitiatives'), 'Audit')), not(empty(parameters('wsAppServicesSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsAppServicesDeploymentName, '-', replace(parameters('wsAppServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAppServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3031,7 +3031,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsAutomationInitiatives'), 'Yes'), equals(parameters('enableWsAutomationInitiatives'), 'Audit')), not(empty(parameters('wsAutomationSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsAutomationDeploymentName, '-', replace(parameters('wsAutomationSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAutomationSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3080,7 +3080,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsBotServiceInitiatives'), 'Yes'), equals(parameters('enableWsBotServiceInitiatives'), 'Audit')), not(empty(parameters('wsBotServiceSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsBotServiceDeploymentName, '-', replace(parameters('wsBotServiceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsBotServiceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3129,7 +3129,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsCognitiveServicesInitiatives'), 'Yes'), equals(parameters('enableWsCognitiveServicesInitiatives'), 'Audit')), not(empty(parameters('wsCognitiveServicesSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsCognitiveServicesDeploymentName, '-', replace(parameters('wsCognitiveServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCognitiveServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3178,7 +3178,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsComputeInitiatives'), 'Yes'), equals(parameters('enableWsComputeInitiatives'), 'Audit')), not(empty(parameters('wsComputeSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsComputeDeploymentName, '-', replace(parameters('wsComputeSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsComputeSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3227,7 +3227,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsContainerAppsInitiatives'), 'Yes'), equals(parameters('enableWsContainerAppsInitiatives'), 'Audit')), not(empty(parameters('wsContainerAppsSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerAppsDeploymentName, '-', replace(parameters('wsContainerAppsSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerAppsSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3276,7 +3276,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsContainerInstanceInitiatives'), 'Yes'), equals(parameters('enableWsContainerInstanceInitiatives'), 'Audit')), not(empty(parameters('wsContainerInstanceSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerInstanceDeploymentName, '-', replace(parameters('wsContainerInstanceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerInstanceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3325,7 +3325,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsContainerRegistryInitiatives'), 'Yes'), equals(parameters('enableWsContainerRegistryInitiatives'), 'Audit')), not(empty(parameters('wsContainerRegistrySelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerRegistryDeploymentName, '-', replace(parameters('wsContainerRegistrySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerRegistrySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3374,7 +3374,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsCosmosDbInitiatives'), 'Yes'), equals(parameters('enableWsCosmosDbInitiatives'), 'Audit')), not(empty(parameters('wsCosmosDbSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsCosmosDbDeploymentName, '-', replace(parameters('wsCosmosDbSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCosmosDbSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3423,7 +3423,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsDataExplorerInitiatives'), 'Yes'), equals(parameters('enableWsDataExplorerInitiatives'), 'Audit')), not(empty(parameters('wsDataExplorerSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsDataExplorerDeploymentName, '-', replace(parameters('wsDataExplorerSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsDataExplorerSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3472,7 +3472,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsDataFactoryInitiatives'), 'Yes'), equals(parameters('enableWsDataFactoryInitiatives'), 'Audit')), not(empty(parameters('wsDataFactorySelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsDataFactoryDeploymentName, '-', replace(parameters('wsDataFactorySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsDataFactorySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3521,7 +3521,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsEventGridInitiatives'), 'Yes'), equals(parameters('enableWsEventGridInitiatives'), 'Audit')), not(empty(parameters('wsEventGridSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsEventGridDeploymentName, '-', replace(parameters('wsEventGridSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsEventGridSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3570,7 +3570,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsEventHubInitiatives'), 'Yes'), equals(parameters('enableWsEventHubInitiatives'), 'Audit')), not(empty(parameters('wsEventHubSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsEventHubDeploymentName, '-', replace(parameters('wsEventHubSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsEventHubSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3619,7 +3619,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsKeyVaultSupInitiatives'), 'Yes'), equals(parameters('enableWsKeyVaultSupInitiatives'), 'Audit')), not(empty(parameters('wsKeyVaultSupSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsKeyVaultSupDeploymentName, '-', replace(parameters('wsKeyVaultSupSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsKeyVaultSupSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3668,7 +3668,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsKubernetesInitiatives'), 'Yes'), equals(parameters('enableWsKubernetesInitiatives'), 'Audit')), not(empty(parameters('wsKubernetesSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsKubernetesDeploymentName, '-', replace(parameters('wsKubernetesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsKubernetesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3717,7 +3717,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsMachineLearningInitiatives'), 'Yes'), equals(parameters('enableWsMachineLearningInitiatives'), 'Audit')), not(empty(parameters('wsMachineLearningSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsMachineLearningDeploymentName, '-', replace(parameters('wsMachineLearningSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsMachineLearningSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3766,7 +3766,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsMySQLInitiatives'), 'Yes'), equals(parameters('enableWsMySQLInitiatives'), 'Audit')), not(empty(parameters('wsMySQLSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsMySQLDeploymentName, '-', replace(parameters('wsMySQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsMySQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3815,7 +3815,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsNetworkInitiatives'), 'Yes'), equals(parameters('enableWsNetworkInitiatives'), 'Audit')), not(empty(parameters('wsNetworkSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsNetworkDeploymentName, '-', replace(parameters('wsNetworkSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsNetworkSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3867,7 +3867,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsOpenAIInitiatives'), 'Yes'), equals(parameters('enableWsOpenAIInitiatives'), 'Audit')), not(empty(parameters('wsOpenAISelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsOpenAIDeploymentName, '-', replace(parameters('wsOpenAISelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsOpenAISelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3916,7 +3916,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsPostgreSQLInitiatives'), 'Yes'), equals(parameters('enableWsPostgreSQLInitiatives'), 'Audit')), not(empty(parameters('wsPostgreSQLSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsPostgreSQLDeploymentName, '-', replace(parameters('wsPostgreSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsPostgreSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -3965,7 +3965,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsServiceBusInitiatives'), 'Yes'), equals(parameters('enableWsServiceBusInitiatives'), 'Audit')), not(empty(parameters('wsServiceBusSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsServiceBusDeploymentName, '-', replace(parameters('wsServiceBusSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsServiceBusSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -4014,7 +4014,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsSQLInitiatives'), 'Yes'), equals(parameters('enableWsSQLInitiatives'), 'Audit')), not(empty(parameters('wsSQLSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsSQLDeploymentName, '-', replace(parameters('wsSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -4063,7 +4063,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsStorageInitiatives'), 'Yes'), equals(parameters('enableWsStorageInitiatives'), 'Audit')), not(empty(parameters('wsStorageSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsStorageDeploymentName, '-', replace(parameters('wsStorageSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsStorageSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -4112,7 +4112,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsSynapseInitiatives'), 'Yes'), equals(parameters('enableWsSynapseInitiatives'), 'Audit')), not(empty(parameters('wsSynapseSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsSynapseDeploymentName, '-', replace(parameters('wsSynapseSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsSynapseSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -4161,7 +4161,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsVirtualDesktopInitiatives'), 'Yes'), equals(parameters('enableWsVirtualDesktopInitiatives'), 'Audit')), not(empty(parameters('wsVirtualDesktopSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').wsVirtualDesktopDeploymentName, '-', replace(parameters('wsVirtualDesktopSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsVirtualDesktopSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -4210,7 +4210,7 @@
         {
             "condition": "[not(empty(parameters('regulatoryComplianceInitativesToAssign')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[take(concat(variables('deploymentNames').regulatoryComplianceInitativesToAssignDeploymentName, if(contains(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, '-'), split(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, '-')[1], parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg), '-', uniqueString(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].policy.id)), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[parameters('connectivityLocation')]",
@@ -4354,7 +4354,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').resourceDiagnosticsPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4386,7 +4386,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').activityDiagnosticsPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4413,7 +4413,7 @@
         {
             "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').costOptimizationDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4436,7 +4436,7 @@
         {
             "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').trustedLaunchDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4459,7 +4459,7 @@
         {
             "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').zoneResilientDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4482,7 +4482,7 @@
         {
             "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').resourceRgLocationDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4505,7 +4505,7 @@
         {
             "condition": "[and(equals(parameters('enableAsc'), 'Yes'), not(empty(variables('subscriptionIds'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').MDFCSubscriptionEnableDeploymentName, copyIndex())]",
             "subscriptionId": "[variables('subscriptionIds')[copyIndex()]]",
             "location": "[parameters('connectivityLocation')]",
@@ -4585,7 +4585,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().name, 'AzureCloud'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ascPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4651,7 +4651,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().name, 'AzureCloud'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').atpOssDbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4677,7 +4677,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().name, 'AzureCloud'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').atpSqlDbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4703,7 +4703,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().name, 'AzureCloud'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').mdEndpointsDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4729,7 +4729,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().name, 'AzureCloud'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').mdEndpointsAMADeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4755,7 +4755,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), not(equals(parameters('denyClassicResources'), 'No')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').denyClassicResourcePolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4782,7 +4782,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), not(equals(parameters('denyVMUnmanagedDisk'), 'No')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').denyVMUnmanagedDiskPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4805,7 +4805,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().resourceManager, 'https://management.usgovcloudapi.net'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ascGovPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4850,7 +4850,7 @@
         {
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').denyActionDeleteUAMIAMAPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4880,7 +4880,7 @@
         {
             "condition": "[and(equals(parameters('enableDdoS'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ddosRgDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -4911,7 +4911,7 @@
         {
             "condition": "[and(equals(parameters('enableDdoS'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ddosDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').ddosRg]",
@@ -4939,7 +4939,7 @@
         {
             "condition": "[and(or(equals(parameters('enableDdoS'), 'Yes'), equals(parameters('enableDdoS'), 'Audit')), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ddosHubPolicyDeploymentName]",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -4968,7 +4968,7 @@
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').vnetConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -5063,7 +5063,7 @@
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableHub'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').nvaConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -5141,7 +5141,7 @@
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableHub'), 'vwan'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').vwanConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -5269,7 +5269,7 @@
         {
             "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[variables('deploymentNames').avnmConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -5311,7 +5311,7 @@
         {
             "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "name": "[variables('esLiteDeploymentNames').avnmLiteConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -5350,7 +5350,7 @@
         {
             "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').avnmPolicyDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
@@ -5382,7 +5382,7 @@
         {
             "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').avnmLitePolicyDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
@@ -5417,7 +5417,7 @@
         {
             "condition": "[and(equals(parameters('enablePrivateDnsZones'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').privateDnsZoneRgDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -5451,7 +5451,7 @@
         {
             "condition": "[and(equals(parameters('enablePrivateDnsZones'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').privateDnsZonesDeploymentName, copyIndex())]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').privateDnsRg]",
@@ -5497,7 +5497,7 @@
         {
             "condition": "[and(equals(parameters('enablePrivateDnsZonesSecondary'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').privateDnsZoneRg2DeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -5531,7 +5531,7 @@
         {
             "condition": "[and(equals(parameters('enablePrivateDnsZonesSecondary'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').privateDnsZones2DeploymentName, copyIndex())]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').privateDnsRg2]",
@@ -5576,7 +5576,7 @@
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),  equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').vnetConnectivityHub2DeploymentName]",
             "dependsOn": [
@@ -5671,7 +5671,7 @@
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').nvaConnectivityHub2DeploymentName]",
             "dependsOn": [
@@ -5748,7 +5748,7 @@
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHubSecondary'), 'vhub')), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').hubPeeringDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -5796,7 +5796,7 @@
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').vnetConnectivityRouteTableDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').connectivityRg]",
@@ -5842,7 +5842,7 @@
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').vnetConnectivityRouteTable2DeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').connectivityRgSecondary]",
@@ -5889,7 +5889,7 @@
         {
             "condition": "[or(equals(parameters('enablePrivateDnsZonesForLzs'), 'Yes'), equals(parameters('enablePrivateDnsZonesForLzs'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').privateDnsPolicyDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').corpManagementGroup]",
@@ -5925,7 +5925,7 @@
         {
             "condition": "[equals(parameters('enablePrivateDnsZonesForLzs'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').dnsZoneRoleAssignmentDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[variables('singleVsDedicatedConnectivitySub')]",
@@ -5954,7 +5954,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmMonitoring'), 'Yes'), equals(parameters('enableVmMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azVmMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -5991,7 +5991,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmMonitoring'), 'Yes'), equals(parameters('enableVmMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azVmMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6031,7 +6031,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmssMonitoring'), 'Yes'), equals(parameters('enableVmssMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azVmssMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6068,7 +6068,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmssMonitoring'), 'Yes'), equals(parameters('enableVmssMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azVmssMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6108,7 +6108,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmHybridMonitoring'), 'Yes'), equals(parameters('enableVmHybridMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azVmHybridMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6141,7 +6141,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmHybridMonitoring'), 'Yes'), equals(parameters('enableVmHybridMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azVmHybridMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6177,7 +6177,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableUpdateMgmt'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azureUpdateManagerPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6209,7 +6209,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableUpdateMgmt'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azureUpdateManagerPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6241,7 +6241,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6278,7 +6278,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6318,7 +6318,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmssDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6355,7 +6355,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmssDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6395,7 +6395,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmArcDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6428,7 +6428,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmArcDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6464,7 +6464,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').MDFCDefenderSqlAmaDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6512,7 +6512,7 @@
         {
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').MDFCDefenderSqlAmaDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6563,7 +6563,7 @@
         {
             "condition": "[or(equals(parameters('enableVmBackup'), 'Yes'), equals(parameters('enableVmBackup'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azBackupLzPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6589,7 +6589,7 @@
         {
             "condition": "[and(or(equals(parameters('enableLzDdoS'), 'Yes'), equals(parameters('enableLzDdoS'), 'Audit')), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ddosLzPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6618,7 +6618,7 @@
         {
             "condition": "[or(equals(parameters('denyAksPrivilegedEscalation'), 'Yes'), equals(parameters('denyAksPrivilegedEscalation'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').aksPrivEscalationPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6641,7 +6641,7 @@
         {
             "condition": "[or(equals(parameters('denyAksPrivileged'), 'Yes'), equals(parameters('denyAksPrivileged'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').aksPrivilegedPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6664,7 +6664,7 @@
         {
             "condition": "[or(equals(parameters('denyHttpIngressForAks'), 'Yes'), equals(parameters('denyHttpIngressForAks'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').aksHttpsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6687,7 +6687,7 @@
         {
             "condition": "[or(equals(parameters('enableEncryptionInTransit'), 'Yes'), equals(parameters('enableEncryptionInTransit'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').tlsSslPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6713,7 +6713,7 @@
         {
             "condition": "[or(equals(parameters('denyIpForwarding'), 'Yes'),equals(parameters('denyIpForwarding'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ipFwPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6736,7 +6736,7 @@
         {
             "condition": "[or(equals(parameters('denyPublicEndpoints'), 'Yes'),equals(parameters('denyPublicEndpoints'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').publicEndpointPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6762,7 +6762,7 @@
         {
             "condition": "[or(equals(parameters('denyPipOnNicforCorp'), 'Yes'), equals(parameters('denyPipOnNicforCorp'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pipOnNicPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6785,7 +6785,7 @@
         {
             "condition": "[or(equals(parameters('denyMgmtPorts'), 'Yes'), equals(parameters('denyMgmtPorts'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').mgmtFromInternetPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6811,7 +6811,7 @@
         {
             "condition": "[or(equals(parameters('enablePrivateSubnet'), 'Yes'), equals(parameters('enablePrivateSubnet'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').privateSubnetDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6837,7 +6837,7 @@
         {
             "condition": "[or(equals(parameters('enablePrivateSubnet'), 'Yes'), equals(parameters('enablePrivateSubnet'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').privateSubnetDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6863,7 +6863,7 @@
         {
             "condition": "[or(equals(parameters('enableStorageHttps'), 'Yes'), equals(parameters('enableStorageHttps'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').storageHttpsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6886,7 +6886,7 @@
         {
             "condition": "[or(equals(parameters('enforceKvGuardrails'), 'Yes'), equals(parameters('enforceKvGuardrails'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').kvGuardrailsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6912,7 +6912,7 @@
         {
             "condition": "[or(equals(parameters('enforceKvGuardrailsPlat'), 'Yes'), equals(parameters('enforceKvGuardrailsPlat'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').kvGuardrailsPolicyPlatDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6938,7 +6938,7 @@
         {
             "condition": "[or(equals(parameters('enforceBackup'), 'Yes'), equals(parameters('enforceBackup'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').backupPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6964,7 +6964,7 @@
         {
             "condition": "[or(equals(parameters('enforceBackupPlat'), 'Yes'), equals(parameters('enforceBackupPlat'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').backupPlatPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -6990,7 +6990,7 @@
         {
             "condition": "[equals(parameters('enableGuestAttestationPlat'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').guestAttPlatPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7019,7 +7019,7 @@
         {
             "condition": "[equals(parameters('enableGuestAttestationLZ'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').guestAttLZPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7048,7 +7048,7 @@
         {
             "condition": "[or(equals(parameters('denyHybridNetworking'), 'Yes'), equals(parameters('denyHybridNetworking'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').denyHybridNetworkingPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7071,7 +7071,7 @@
         {
             "condition": "[or(equals(parameters('auditPeDnsZones'), 'Yes'), equals(parameters('auditPeDnsZones'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').auditPeDnsZonesPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7100,7 +7100,7 @@
         {
             "condition": "[or(equals(parameters('auditAppGwWaf'), 'Yes'), equals(parameters('auditAppGwWaf'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').auditAppGWWafPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7123,7 +7123,7 @@
         {
             "condition": "[or(equals(parameters('enforceACSB'), 'Yes'), equals(parameters('enforceACSB'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').enforceACSBPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7149,7 +7149,7 @@
         {
             "condition": "[or(equals(parameters('denySubnetWithoutNsg'), 'Yes'), equals(parameters('denySubnetWithoutNsg'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').subnetNsgPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7175,7 +7175,7 @@
         {
             "condition": "[or(equals(parameters('enableSqlAudit'), 'Yes'), equals(parameters('enableSqlAudit'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').sqlAuditPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7207,7 +7207,7 @@
         {
             "condition": "[equals(parameters('enableSqlAudit'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').sqlAuditRoleAssignmentDeploymentName1]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[variables('singleVsDedicatedMgmtSub')]",
@@ -7236,7 +7236,7 @@
         {
             "condition": "[equals(parameters('enableSqlAudit'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').sqlAuditRoleAssignmentDeploymentName2]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[variables('singleVsDedicatedMgmtSub')]",
@@ -7265,7 +7265,7 @@
         {
             "condition": "[or(equals(parameters('enableSqlEncryption'), 'Yes'), equals(parameters('enableSqlEncryption'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').sqlEncryptionPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7291,7 +7291,7 @@
         {
             "condition": "[or(equals(parameters('enableSqlThreat'), 'Yes'), equals(parameters('enableSqlThreat'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').sqlThreatPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7317,7 +7317,7 @@
         {
             "condition": "[or(equals(parameters('enableDecommissioned'), 'Yes'), equals(parameters('enableDecommissioned'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').decommissionPolicyDeploymentName]",
             "scope": "[variables('scopes').decommissionedManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7343,7 +7343,7 @@
         {
             "condition": "[or(equals(parameters('enableSandbox'), 'Yes'), equals(parameters('enableSandbox'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').sandboxPolicyDeploymentName]",
             "scope": "[variables('scopes').sandboxManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7369,7 +7369,7 @@
         {
             "condition": "[and(equals(parameters('enableVmBackupForIdentity'), 'Yes'), not(empty(parameters('identitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').azBackupIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7395,7 +7395,7 @@
         {
             "condition": "[and(equals(parameters('denyPipForIdentity'), 'Yes'), not(empty(parameters('identitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pipPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7419,7 +7419,7 @@
         {
             "condition": "[and(equals(parameters('denySubnetWithoutNsgForIdentity'), 'Yes'), not(empty(parameters('identitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').subnetNsgIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7446,7 +7446,7 @@
         {
             "condition": "[and(equals(parameters('denyMgmtPortsForIdentity'), 'Yes'), not(empty(parameters('identitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').mgmtFromInternetIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7473,7 +7473,7 @@
         {
             "condition": "[and(or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('identityAddressPrefix'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').identityPeeringDeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -7519,7 +7519,7 @@
         {
             "condition": "[and(or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('identityAddressPrefixSecondary'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').identityPeering2DeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocationSecondary')]",
@@ -7565,7 +7565,7 @@
         {
             "condition": "[and(equals(parameters('enableHub'), 'vwan'), not(empty(parameters('identityAddressPrefix'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').identityVwanPeeringDeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -7611,7 +7611,7 @@
         {
             "condition": "[and(equals(parameters('enableHubSecondary'), 'vwan'), not(empty(parameters('identityAddressPrefixSecondary'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').identityVwanPeering2DeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocationSecondary')]",
@@ -7657,7 +7657,7 @@
         {
             "condition": "[not(empty(parameters('onlineLzSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').onlineLzSubs, copyIndex())]",
             "scope": "[variables('scopes').onlineManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7691,7 +7691,7 @@
         {
             "condition": "[not(empty(parameters('corpLzSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').corpLzSubs, copyIndex())]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7725,7 +7725,7 @@
         {
             "condition": "[not(empty(parameters('corpConnectedLzSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').corpConnectedMoveLzSubs, copyIndex())]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -7759,7 +7759,7 @@
         {
             "condition": "[and(or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('corpConnectedLzSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('deploymentNames').corpPeeringDeploymentName, copyIndex())]",
             "subscriptionId": "[if(not(empty(parameters('corpConnectedLzSubscriptionId'))), parameters('corpConnectedLzSubscriptionId')[copyIndex()].subs, '')]",
             "location": "[parameters('connectivityLocation')]",
@@ -7813,7 +7813,7 @@
         {
             "condition": "[not(empty(parameters('singlePlatformSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').mgmtGroupLiteDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "properties": {
@@ -7833,7 +7833,7 @@
         {
             "condition": "[not(empty(parameters('singlePlatformSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement]",
             "location": "[parameters('connectivityLocation')]",
             "scope": "[variables('scopes').platformManagementGroup]",
@@ -7859,7 +7859,7 @@
         {
             "condition": "[and(equals(parameters('enableLogAnalytics'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').monitoringLiteDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -7892,7 +7892,7 @@
         {
             "condition": "[and(equals(parameters('enableLogAnalytics'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').userAssignedIdentityLiteDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -7921,7 +7921,7 @@
         {
             "condition": "[and(equals(parameters('enableDdoS'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').ddosRgLiteDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -7950,7 +7950,7 @@
         {
             "condition": "[and(equals(parameters('enableDdoS'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').ddosLiteDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').ddosRg]",
@@ -7976,7 +7976,7 @@
         {
             "condition": "[and(equals(parameters('enablePrivateDnsZones'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').privateDnsZoneRgLiteDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -8010,7 +8010,7 @@
         {
             "condition": "[and(equals(parameters('enablePrivateDnsZonesSecondary'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').privateDnsZoneRgLite2DeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -8043,7 +8043,7 @@
         {
             "condition": "[and(equals(parameters('enablePrivateDnsZones'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('esLitedeploymentNames').privateDnsZonesLiteDeploymentName, copyIndex())]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').privateDnsRg]",
@@ -8089,7 +8089,7 @@
         {
             "condition": "[and(equals(parameters('enablePrivateDnsZonesSecondary'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[concat(variables('esLitedeploymentNames').privateDnsZonesLite2DeploymentName, copyIndex())]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').privateDnsRg2]",
@@ -8132,7 +8132,7 @@
         {
             "condition": "[and(and(equals(parameters('enableDdoS'), 'Yes'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableHub'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').ddosHubLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -8161,7 +8161,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityHubLiteDeploymentName]",
             "dependsOn": [
@@ -8254,7 +8254,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').nvaConnectivityHubLiteDeploymentName]",
             "dependsOn": [
@@ -8329,7 +8329,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'vwan'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').vwanConnectivityHubLiteDeploymentName]",
             "dependsOn": [
@@ -8454,7 +8454,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityHubLite2DeploymentName]",
             "dependsOn": [
@@ -8547,7 +8547,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').nvaConnectivityHubLite2DeploymentName]",
             "dependsOn": [
@@ -8622,7 +8622,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHubSecondary'), 'vhub')), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').hubPeeringDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -8674,7 +8674,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityRouteTableDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').connectivityRg]",
@@ -8720,7 +8720,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityRouteTable2DeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[variables('platformRgNames').connectivityRgSecondary]",
@@ -8766,7 +8766,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleVmInsightsLiteDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -8795,7 +8795,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleChangeTrackingLiteDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -8824,7 +8824,7 @@
         {
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleMdfcDefenderSQLLiteDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -8853,7 +8853,7 @@
         {
             "condition": "[and(equals(parameters('enableVmBackupForIdentity'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').azBackupIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -8879,7 +8879,7 @@
         {
             "condition": "[and(equals(parameters('denySubnetWithoutNsgForIdentity'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').subnetNsgIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -8906,7 +8906,7 @@
         {
             "condition": "[and(equals(parameters('denyMgmtPortsForIdentity'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('esLitedeploymentNames').mgmtFromInternetIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[parameters('connectivityLocation')]",
@@ -8932,7 +8932,7 @@
         },
         {
             "condition": "[equals(parameters('telemetryOptOut'), 'No')]",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
@@ -8947,7 +8947,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameSinglePlatformSub]",
             "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
@@ -8962,7 +8962,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), empty(parameters('singlePlatformSubscriptionId')))]",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameMultiPlatformSubs]",
             "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
@@ -8977,7 +8977,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableHub'), 'No'))]",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingNone]",
             "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
@@ -8992,7 +8992,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')))]",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingHubSpoke]",
             "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
@@ -9007,7 +9007,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableHub'), 'vwan'))]",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingVirtualWan]",
             "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
@@ -9022,7 +9022,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableMonitorBaselines'), 'Yes'))]",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').ambaPortalPidCuaDeploymentName]",
             "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
@@ -9037,7 +9037,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
-            "apiVersion": "2024-01-01",
+            "apiVersion": "2024-03-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameSecondaryRegion]",
             "location": "[parameters('connectivityLocation')]",
             "type": "Microsoft.Resources/deployments",
