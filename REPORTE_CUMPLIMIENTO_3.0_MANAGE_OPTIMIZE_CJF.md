@@ -88,6 +88,10 @@ Se implementó la arquitectura completa de Azure Landing Zone basada en el frame
 - Parámetros: `enterpriseScaleCompanyPrefix: "CJF"`
 - Documentación: `AUDITORIA_MICROSOFT_ALZ_PROJECT.md` (Sección 2.2)
 
+**Screenshots Disponibles:**
+
+![Management Groups Hierarchy](images/Captura%20de%20pantalla%202025-12-10%20155504.png)
+
 #### Networking Architecture Design
 
 **Topología Implementada: Virtual WAN Hub (vHub)**
@@ -137,15 +141,15 @@ Se implementó la arquitectura completa de Azure Landing Zone basada en el frame
 
 **Screenshots Disponibles:**
 
-![Configuración de red](images/Captura%20de%20pantalla%202025-12-10%20154927.png)
+![Configuración de red y Virtual Network Hub](images/Captura%20de%20pantalla%202025-12-12%20090010.png)
 
-![Virtual WAN Hub](images/Captura%20de%20pantalla%202025-12-10%20155143.png)
+![Azure Firewall Premium Configuration](images/Captura%20de%20pantalla%202025-12-12%20090131.png)
 
-![Azure Firewall](images/Captura%20de%20pantalla%202025-12-10%20155504.png)
+![Virtual Network Hub Topology](images/Captura%20de%20pantalla%202025-12-12%20091650.png)
 
-![Topología de red](images/Captura%20de%20pantalla%202025-12-11%20173226.png)
+![DDoS Protection Configuration](images/Captura%20de%20pantalla%202025-12-12%20093621.png)
 
-![Configuración de conectividad](images/Captura%20de%20pantalla%202025-12-11%20173452.png)
+![Private DNS Zones Configuration](images/Captura%20de%20pantalla%202025-12-12%20094356.png)
 
 #### Resource Organization
 
@@ -189,11 +193,13 @@ Todos los recursos desplegados incluyen tags estándar:
 
 **Screenshots Disponibles:**
 
-![Resource Groups y tags](images/Captura%20de%20pantalla%202025-12-11%20102933.png)
+![Resource Groups Organization](images/Captura%20de%20pantalla%202025-12-11%20102933.png)
 
-![Naming conventions](images/Captura%20de%20pantalla%202025-12-11%20123545.png)
+![Resource Tags Implementation](images/Captura%20de%20pantalla%202025-12-11%20123545.png)
 
-![Tagging enforcement](images/Captura%20de%20pantalla%202025-12-11%20140932.png)
+![Azure Policy Tagging Enforcement](images/Captura%20de%20pantalla%202025-12-11%20140932.png)
+
+![Naming Conventions Applied](images/Captura%20de%20pantalla%202025-12-12%20095308.png)
 
 ### Azure Landing Zone Review Assessment
 
@@ -264,11 +270,13 @@ Todos los recursos desplegados incluyen tags estándar:
 
 **Screenshots Disponibles:**
 
-![Pipeline ejecución](images/Captura%20de%20pantalla%202025-12-11%20173651.png)
+![GitHub Actions Pipeline Execution](images/Captura%20de%20pantalla%202025-12-11%20173651.png)
 
-![Deployment status](images/Captura%20de%20pantalla%202025-12-11%20173817.png)
+![ARM Template Deployment Status](images/Captura%20de%20pantalla%202025-12-11%20173817.png)
 
-![CI/CD workflow](images/Captura%20de%20pantalla%202025-12-11%20173922.png)
+![CI/CD Workflow Jobs](images/Captura%20de%20pantalla%202025-12-11%20173922.png)
+
+![ARM Template Validation Results](images/Captura%20de%20pantalla%202025-12-12%20095741.png)
 
 ### Despliegues para Dos Clientes Únicos
 
@@ -426,11 +434,13 @@ Además, después de ejecutar verificaciones automatizadas de seguridad y cumpli
 
 **Screenshots Disponibles:**
 
-![Azure Monitor dashboard](images/Captura%20de%20pantalla%202025-12-11%20174108.png)
+![Azure Monitor Dashboard](images/Captura%20de%20pantalla%202025-12-11%20174108.png)
 
-![Log Analytics workspace](images/Captura%20de%20pantalla%202025-12-11%20174152.png)
+![Log Analytics Workspace Configuration](images/Captura%20de%20pantalla%202025-12-11%20174152.png)
 
-![Monitoring configuration](images/Captura%20de%20pantalla%202025-12-11%20174859.png)
+![Data Collection Rules Configuration](images/Captura%20de%20pantalla%202025-12-11%20174859.png)
+
+![VM Insights Monitoring](images/Captura%20de%20pantalla%202025-12-12%20100259.png)
 
 #### 2. Azure Automation
 
@@ -520,7 +530,9 @@ Además, después de ejecutar verificaciones automatizadas de seguridad y cumpli
 
 **Screenshots Disponibles:**
 
-![Security scan results](images/Captura%20de%20pantalla%202025-12-10%20160855.png)
+![TruffleHog Security Scan Results](images/Captura%20de%20pantalla%202025-12-10%20160855.png)
+
+![Secret Scanning Pipeline Job](images/Captura%20de%20pantalla%202025-12-11%20173226.png)
 
 #### 2. Monitoring Dashboard Export
 
@@ -588,9 +600,11 @@ Además, después de ejecutar verificaciones automatizadas de seguridad y cumpli
 
 **Screenshots Disponibles:**
 
-![Pipeline execution](images/Captura%20de%20pantalla%202025-12-11%20173651.png)
+![GitHub Actions Workflow YAML Pipeline](images/Captura%20de%20pantalla%202025-12-11%20173651.png)
 
-![Security jobs](images/Captura%20de%20pantalla%202025-12-11%20173817.png)
+![Security Scanning Jobs Execution](images/Captura%20de%20pantalla%202025-12-11%20173817.png)
+
+![ARM TTK Linter Results](images/Captura%20de%20pantalla%202025-12-11%20173452.png)
 
 #### 4. Software Bill of Materials (SBOM)
 
@@ -664,7 +678,11 @@ Además, después de ejecutar verificaciones automatizadas de seguridad y cumpli
 
 **Screenshots Disponibles:**
 
-![Policy compliance](images/Captura%20de%20pantalla%202025-12-10%20154927d.png)
+![Azure Policy Compliance Dashboard](images/Captura%20de%20pantalla%202025-12-10%20154927d.png)
+
+![Policy Compliance Results Export](images/Captura%20de%20pantalla%202025-12-10%20154927.png)
+
+![Policy Assignments Overview](images/Captura%20de%20pantalla%202025-12-10%20155143.png)
 
 ### Características de los Artefactos
 

@@ -159,7 +159,20 @@
       "value": "Yes"
     },
     "privateDnsZonesToDeploy": {
-      "value": []
+      "value": [
+        "privatelink.blob.core.windows.net",
+        "privatelink.file.core.windows.net",
+        "privatelink.queue.core.windows.net",
+        "privatelink.table.core.windows.net",
+        "privatelink.dfs.core.windows.net",
+        "privatelink.database.windows.net",
+        "privatelink.documents.azure.com",
+        "privatelink.vaultcore.azure.net",
+        "privatelink.azurewebsites.net",
+        "privatelink.servicebus.windows.net",
+        "privatelink.eventgrid.azure.net",
+        "privatelink.wus2.backup.windowsazure.com"
+      ]
     },
     "enableVpnGw": {
       "value": "No"
