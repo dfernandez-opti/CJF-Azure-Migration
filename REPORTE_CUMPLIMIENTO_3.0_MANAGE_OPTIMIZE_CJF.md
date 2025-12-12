@@ -13,7 +13,7 @@
 
 Este reporte documenta la implementación completa de Azure Landing Zone (ALZ) para el cliente CJF, demostrando metodologías robustas para establecer entornos operacionales exitosos con políticas y controles integrados. La implementación sigue el framework Enterprise-Scale de Microsoft y proporciona una base escalable, segura y bien gobernada para la migración y operación de cargas de trabajo en Azure.
 
-**Enfoque de Implementación:** Full Azure Landing Zone (ALZ) conceptual architecture
+**Enfoque de Implementación:** Start small and expand
 
 **Clientes Únicos Documentados:** 2
 - Cliente 1: CJF (Proyecto Principal)
@@ -33,9 +33,9 @@ El partner debe demostrar adherencia a las áreas de diseño de Azure Landing Zo
 
 ### Enfoque Utilizado
 
-**Full Azure Landing Zone (ALZ) Conceptual Architecture**
+**Start small and expand**
 
-Se implementó la arquitectura completa de Azure Landing Zone basada en el framework Enterprise-Scale de Microsoft, que implementa un enfoque estándar para la configuración de herramientas de gobernanza y operaciones antes de la implementación de cargas de trabajo.
+Se implementó un enfoque incremental de Azure Landing Zone basado en el framework Enterprise-Scale de Microsoft, comenzando con una configuración inicial mínima y expandiendo gradualmente las herramientas de gobernanza y operaciones según las necesidades del proyecto.
 
 ### Evidencia de Despliegue Repetible
 
@@ -60,6 +60,9 @@ Se implementó la arquitectura completa de Azure Landing Zone basada en el frame
 **Configuración Implementada:**
 
 1. **Management Groups Hierarchy**
+   
+   Implementada siguiendo el enfoque "Start small and expand", comenzando con una estructura básica que se expande según las necesidades del proyecto:
+   
    ```
    cjf (Root)
    ├── cjf-platform
@@ -286,7 +289,7 @@ Todos los recursos desplegados incluyen tags estándar:
 - Company Prefix: CJF
 - Subscription ID: 922fcb86-d9bc-4c9a-8782-b4f40a87559e
 - Región: West US 2
-- Enfoque: Full ALZ Conceptual Architecture
+- Enfoque: Start small and expand
 
 **Evidencia Completa:**
 - Templates ARM desplegados
@@ -907,7 +910,7 @@ El proyecto CJF Azure Migration demuestra una implementación completa y robusta
 **Región Secundaria:** West US 2  
 **Contacto de Seguridad:** administrador@CJFGJ.onmicrosoft.com  
 **Framework:** Azure Landing Zone Enterprise-Scale (esLite mode)  
-**Enfoque:** Full Azure Landing Zone Conceptual Architecture
+**Enfoque:** Start small and expand
 
 ### C. Herramientas y Tecnologías
 
