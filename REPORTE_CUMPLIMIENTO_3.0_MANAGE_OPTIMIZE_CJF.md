@@ -136,11 +136,16 @@ Se implementó la arquitectura completa de Azure Landing Zone basada en el frame
 - Documentación: `AUDITORIA_MICROSOFT_ALZ_PROJECT.md` (Sección 3.4)
 
 **Screenshots Disponibles:**
-- `images/Captura de pantalla 2025-12-10 154927.png` - Configuración de red
-- `images/Captura de pantalla 2025-12-10 155143.png` - Virtual WAN Hub
-- `images/Captura de pantalla 2025-12-10 155504.png` - Azure Firewall
-- `images/Captura de pantalla 2025-12-11 173226.png` - Topología de red
-- `images/Captura de pantalla 2025-12-11 173452.png` - Configuración de conectividad
+
+![Configuración de red](images/Captura%20de%20pantalla%202025-12-10%20154927.png)
+
+![Virtual WAN Hub](images/Captura%20de%20pantalla%202025-12-10%20155143.png)
+
+![Azure Firewall](images/Captura%20de%20pantalla%202025-12-10%20155504.png)
+
+![Topología de red](images/Captura%20de%20pantalla%202025-12-11%20173226.png)
+
+![Configuración de conectividad](images/Captura%20de%20pantalla%202025-12-11%20173452.png)
 
 #### Resource Organization
 
@@ -183,9 +188,12 @@ Todos los recursos desplegados incluyen tags estándar:
 - Documentación: `AUDITORIA_MICROSOFT_ALZ_PROJECT.md` (Sección 4.2)
 
 **Screenshots Disponibles:**
-- `images/Captura de pantalla 2025-12-11 102933.png` - Resource Groups y tags
-- `images/Captura de pantalla 2025-12-11 123545.png` - Naming conventions
-- `images/Captura de pantalla 2025-12-11 140932.png` - Tagging enforcement
+
+![Resource Groups y tags](images/Captura%20de%20pantalla%202025-12-11%20102933.png)
+
+![Naming conventions](images/Captura%20de%20pantalla%202025-12-11%20123545.png)
+
+![Tagging enforcement](images/Captura%20de%20pantalla%202025-12-11%20140932.png)
 
 ### Azure Landing Zone Review Assessment
 
@@ -255,9 +263,12 @@ Todos los recursos desplegados incluyen tags estándar:
 - Deployment logs: `deployment-evidence/`
 
 **Screenshots Disponibles:**
-- `images/Captura de pantalla 2025-12-11 173651.png` - Pipeline ejecución
-- `images/Captura de pantalla 2025-12-11 173817.png` - Deployment status
-- `images/Captura de pantalla 2025-12-11 173922.png` - CI/CD workflow
+
+![Pipeline ejecución](images/Captura%20de%20pantalla%202025-12-11%20173651.png)
+
+![Deployment status](images/Captura%20de%20pantalla%202025-12-11%20173817.png)
+
+![CI/CD workflow](images/Captura%20de%20pantalla%202025-12-11%20173922.png)
 
 ### Despliegues para Dos Clientes Únicos
 
@@ -414,9 +425,12 @@ Además, después de ejecutar verificaciones automatizadas de seguridad y cumpli
 - Configuración: `3.0-Manage-Optimize/3.3-Operations-Management/azure-monitor-config/`
 
 **Screenshots Disponibles:**
-- `images/Captura de pantalla 2025-12-11 174108.png` - Azure Monitor dashboard
-- `images/Captura de pantalla 2025-12-11 174152.png` - Log Analytics workspace
-- `images/Captura de pantalla 2025-12-11 174859.png` - Monitoring configuration
+
+![Azure Monitor dashboard](images/Captura%20de%20pantalla%202025-12-11%20174108.png)
+
+![Log Analytics workspace](images/Captura%20de%20pantalla%202025-12-11%20174152.png)
+
+![Monitoring configuration](images/Captura%20de%20pantalla%202025-12-11%20174859.png)
 
 #### 2. Azure Automation
 
@@ -505,7 +519,8 @@ Además, después de ejecutar verificaciones automatizadas de seguridad y cumpli
 - Configuración: `3.0-Manage-Optimize/3.3-Operations-Management/security-scan-reports/`
 
 **Screenshots Disponibles:**
-- `images/Captura de pantalla 2025-12-10 160855.png` - Security scan results
+
+![Security scan results](images/Captura%20de%20pantalla%202025-12-10%20160855.png)
 
 #### 2. Monitoring Dashboard Export
 
@@ -572,8 +587,10 @@ Además, después de ejecutar verificaciones automatizadas de seguridad y cumpli
 - Permisos configurados: Líneas 42-45
 
 **Screenshots Disponibles:**
-- `images/Captura de pantalla 2025-12-11 173651.png` - Pipeline execution
-- `images/Captura de pantalla 2025-12-11 173817.png` - Security jobs
+
+![Pipeline execution](images/Captura%20de%20pantalla%202025-12-11%20173651.png)
+
+![Security jobs](images/Captura%20de%20pantalla%202025-12-11%20173817.png)
 
 #### 4. Software Bill of Materials (SBOM)
 
@@ -646,7 +663,8 @@ Además, después de ejecutar verificaciones automatizadas de seguridad y cumpli
 - Template ARM: Políticas de Azure implementadas
 
 **Screenshots Disponibles:**
-- `images/Captura de pantalla 2025-12-10 154927d.png` - Policy compliance
+
+![Policy compliance](images/Captura%20de%20pantalla%202025-12-10%20154927d.png)
 
 ### Características de los Artefactos
 
